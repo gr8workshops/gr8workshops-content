@@ -1,1 +1,0 @@
-Please add content for the Testing/TDD with Spock session of the new to coding track here.
