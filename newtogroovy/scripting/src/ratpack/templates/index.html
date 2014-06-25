@@ -104,11 +104,37 @@
                         <pre><code class="string">
                                   "Hello, \$name"
                         </code></pre>
+                        <p>Multi-line Strings</p>
+                        <pre><code class="string">
+                            ''' This
+                                is
+                                a
+                                multi-line
+                                string '''
+                        </code></pre>
                     </section>
                     <section>
+                        <h2>String Manipulation</h2>
+                        <p>Split</p>
+                        <pre><code>
+                            def myString = 'I <3 Groovy'
+                            myString.tokenize('<3')</code><code class="fragment">
+                            --> [I, Groovy]
+                        </code></pre>
+                        <div class="fragment"><p>Join</p>
+                        <pre><code>
+                            def myListOfStrings = ['I','<3','Groovy']
+                            myListOfStrings.join(' ')</code><code class="fragment">
+                            --> I <3 Groovy
+                        </code></pre>
+                        </div>
+                    </section>
+                        <section>
                             <h2>
                                 Collections
                             </h2>
+                        </section>
+                        <section>
                             <p>Lists</p>
                             <pre><code>
                                def myList = ['a','b',2]
@@ -118,31 +144,115 @@
                             </code><code class="fragment">
                                 --> ['a','b','2','a','b','2']
                             </code></pre>
+                        </section><section>
+                            <h2>Special Functions</h2>
+                            <p>Spread Dot</p>
                             <pre><code class="fragment">
                                myList*.multiply(2)
                             </code><code class="fragment">
                                 --> ['aa','bb',4]
                             </code></pre>
-                    </section>
+                        </section>
                     <section>
                         <h2>Maps</h2>
-                        <p>Key Value Pairs</p>
                         <pre><code>
-                            def myMap = [val1: 'a',val2: 'b', val3: 2]
-
+                            def myMap = [val1: 'a',val2: 'b', val3: 'b']
                             myMap.values()
                             --> ['a','b',2]
-                            </code><code class="fragment">
-                            myMap.find{ it.value == 'b'}
+                            </code></pre><pre><code class="fragment">
+                            myMap.find { it.value == 'b'}
                             --> val2=b
+                            </code></pre><pre><code class="fragment">
+                            myMap.findAll { it.value == 'b' }
+                            --> [val2:b, val3:b]
                             </code></pre>
                     </section>
                 </section>
 
+                <section>
+                    <section>
+                    <h3>Loops</h3>
+                    </section>
+                    <section>
+                    <p>Each</p>
+                    <pre><code>
+                        def myList = [1,2,3]
+                        def result = []
+                        myList.each {
+                            result << it * 2
+                        }
+                        println result</code><code class="fragment">
+                        --> [2,4,6]
+                    </code></pre>
+                    </section>
+                    <section>
+                        <p>Collect</p>
+                        <pre><code>
+                            def myList = [1,2,3]
+                            def result = myList.collect { item ->
+                                item.multiply(2)
+                            }
+                            println result</code><code class="fragment">
+                            --> [2,4,6]
+                        </code></pre>
+                    </section>
+                    <section>
+                        <p>Ranges</p>
+                        <pre><code>
+                        (1..3).each {
+                            println it * 2
+                        }</code><code class="fragment">
+                        --> 2
+                        --> 4
+                        --> 6</code></pre>
+                    </section>
+                </section>
 
 
                 <section>
+                    <section>
                     <h2>File Procesing</h2>
+                    </section>
+                    <section>
+                        <h2>Creating & Writing to Files</h2>
+                        <pre><code>
+                        def myFile = new File('foo.txt')
+                        myFile.write 'hello, world!!\\n'
+                        myFile.append('and hello universe!')
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Reading Files</h2>
+                        <pre><code>
+                        def myFile = new File('foo.txt')
+                        myFile.eachLine { line ->
+                            def processedLine = line.replaceAll('hello','hi')
+                            println processedLine
+                        }</code><code class="fragment">
+                        --> hi, world!
+                        --> and hi universe!
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Things to Remember</h2>
+                    <ul>
+                        <li>Typing variables is optional</li>
+                        <li>Some syntax is optional<ul><li>semi-colons</li><li> parenthesis around function parameters</li><li>explicit return statements</li></ul> </li>
+                        <li>The last operation completed is the default return value</li>
+                        <li>There is more than one way to do almost everything!</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Step 1 Exercises</h3>
+                    <p> <a href="http://beta.groovy-lang.org/docs/groovy-2.3.1/html/documentation/#_introduction" target="_blank">http://beta.groovy-lang.org/docs/groovy-2.3.1/html/documentation/#_introduction</a> </p>
+                    <p> <a href="http://beta.groovy-lang.org/docs/latest/html/groovy-jdk/" target="_blank">http://beta.groovy-lang.org/docs/latest/html/groovy-jdk/</a></p>
+                </section>
+
+                <section>
+                    <h3>Next Steps</h3>
                 </section>
 
 				<section id="transitions">
