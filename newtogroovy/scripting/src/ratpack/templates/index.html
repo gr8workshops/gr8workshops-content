@@ -87,6 +87,7 @@
                     <h3>Data Types</h3>
                     <ul>
                         <li>Strings</li>
+                        <li>Functions</li>
                         <li>Collections</li>
                         <ul>
                             <li>Lists</li>
@@ -129,7 +130,25 @@
                         </code></pre>
                         </div>
                     </section>
-                        <section>
+
+                    <section>
+                        <h2>Closures</h2>
+                    <pre><code>
+                        def a = { params -> println (params * 2 )}
+                        [1,2,3].each a
+                    </code><code class="fragment">
+                        --> 2
+                        --> 4
+                        --> 6
+                    </code></pre>
+                    <pre><code class="fragment">
+                        a(1)
+                    </code><code class="fragment">
+                        --> 2
+                    </code></pre>
+                    </section>
+
+                    <section>
                             <h2>
                                 Collections
                             </h2>
@@ -208,7 +227,6 @@
                     </section>
                 </section>
 
-
                 <section>
                     <section>
                     <h2>File Procesing</h2>
@@ -246,49 +264,11 @@
                 </section>
 
                 <section>
-                    <h3>Step 1 Exercises</h3>
+                    <h2>Exercises (handout)</h2>
+                    <h3>Resources</h3>
                     <p> <a href="http://beta.groovy-lang.org/docs/groovy-2.3.1/html/documentation/#_introduction" target="_blank">http://beta.groovy-lang.org/docs/groovy-2.3.1/html/documentation/#_introduction</a> </p>
                     <p> <a href="http://beta.groovy-lang.org/docs/latest/html/groovy-jdk/" target="_blank">http://beta.groovy-lang.org/docs/latest/html/groovy-jdk/</a></p>
                 </section>
-
-                <section>
-                    <h3>Next Steps</h3>
-                </section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
 
 			</div>
 
