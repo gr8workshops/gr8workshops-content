@@ -1,1 +1,1 @@
-Please add content for the Intro to Grails session of the new to coding track here.
+The slides will give you step by step instructions to build the Question App provided
