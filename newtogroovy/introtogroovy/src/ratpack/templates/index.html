@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Intro to Groovy</title>
+
+    <meta name="description" content="An introduction to the programming language Groovy for Gr8Workshops">
+    <meta name="author" content="Jenn Strater">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+<section>
+    <h1>Intro to Groovy</h1>
+
+    <h3>Gr8Ladies Gr8Workshop</h3>
+
+    <h3>December 6, 2014</h3>
+
+    <p>
+        <small>Presented By <a href="http://sites.google.com/site/jenniferstrater" target="_blank">Jenn Strater</a> / <a
+                href="http://twitter.com/jennstrater" target="_blank">@jennstrater</a></small>
+    </p>
+    <aside class="notes">
+        Hello and Thank you for attending my session Groovy at Gr8Ladies.
+        Today I will be going through an interactive introduction to the programming language Groovy and using examples
+        from our organization Gr8Ladies.
+    </aside>
+</section>
+
+<section>
+    <h2>Who am I?</h2>
+    <p>Software Engineer</p>
+    <p>Healthcare Communications Division</p>
+    <p>Minneapolis, MN</p>
+    </p>
+    <a href="http://gr8ladies.org" target="_blank"><img class="no-box" src="images/gr8ladiesSquare.jpg" height="150px"
+                                                        width="150px"/></a>
+
+    <p>Co-Founder</p>
+    <aside class="notes">
+        Of course you are probably wondering who I am. First, I’m Jenn Strater. I grew up on the east coast and I
+        currently live in Minneapolis, MN where
+        I am a software engineer in the healthcare communications division of a healthcare services company called
+        Altegra Health.  Quick pitch, we're hiring!
+        http://altegrahealth.force.com/careers/ts2__JobDetails?jobId=a0xE0000004tgK2IAI&tSource=
+        After hours, I work with Gr8Ladies co-founder Allison to run the organization Gr8Ladies. My focus in Gr8Ladies
+        is on retention and professional development within the Groovy ecosystem. If you want to know more, please come to the
+        panel "How Getting Involved In The Community Changed My Life" at 3:45 in Garmin 108.
+    </aside>
+</section>
+
+<section>
+    <h2>Who are you?</h2>
+    <ul>
+        <li class="fragment">Students?</li>
+        <li class="fragment">Professional Developers?</li>
+        <ul>
+            <li class="fragment">Java</li>
+            <li class="fragment">.NET</li>
+            <li class="fragment">PHP</li>
+            <li class="fragment">Groovy?</li>
+        </ul>
+    </ul>
+</section>
+
+<section>
+    <h2>Format</h2>
+        <p>Ask questions!</p>
+        <p>Stop me if something doesn't make sense</p>
+    <aside class="notes">
+        Again thanks everybody for coming. I'm still kind of new at this public speaking things and your input is
+        greatly appreciated.
+        Please remember to rate the presentation at the end(code camp info). Since I'm also kind of new, I like to make
+        my sessions
+        more of an active discussion. When I get nervous I often mis-speak so chances are I may say something wrong or in a way that's confusing. Feel free to
+        stop me and ask questions at any time.
+    </aside>
+</section>
+
+<section>
+    <h2>Outline</h2>
+    <ul>
+        <li>Groovy Overview</li>
+        <li>Basic Data Types</li>
+        <li>Functions</li>
+        <li>Groovy Truth</li>
+        <li>Loops</li>
+        <li>Search</li>
+        <li>Examples</li>
+        <li>OOP</li>
+        <li>APIs*</li>
+        <li>Files*</li>
+    </ul>
+    <aside class="notes">
+        Originally I had hoped to use direct examples from the Gr8Ladies website but as I'm writing that solo right now(yay oss?)
+        I hadn't gotten as far as planned.  The main part of Gr8Ladies right now is teaching and bringing more people
+        into the groovy community so that's what I hope to do here today.
+    </aside>
+</section>
+
+<section>
+    <h2>What's Groovy</h2>
+    <ul>
+        <li>Dynamic, compiled language for the Java Virtual Machine(JVM).</li>
+        <li>Interoperable with existing Java libraries</li>
+        <li>Concise, easy to read code</li>
+        <li>Used by many major companies including:</li>
+    </ul>
+    <div>
+        <img class="horizontal-list-element no-box" src="images/netflix.jpg"/>
+        <img class="horizontal-list-element no-box" src="images/bestBuy.jpg">
+        <img class="horizontal-list-element no-box" src="images/target.png">
+        <img class="horizontal-list-element no-box" src="images/wellsfargo.jpg">
+    </div>
+    <aside class="notes">
+        Groovy is the main focus of today’s session and the foundation of the Gr8 ecosystem of technologies.
+        To start, Groovy is a dynamic compiled language for the JVM. That mean’s it’s dynamic like languages you may
+        know like Python and PHP, but compiled for efficiency to run on the Java Virtual Machine aka the JVM.
+        Many of you may be asking, why learn yet another programming language? And granted, Groovy is not the best
+        language for every situation.
+        However, in a setting where productivity is paramount and you are looking for the stability of the known
+        architecture stack like Java, Groovy is the best choice.
+        As you’ll see, Groovy’s easy to learn, flexible syntax and interoperability with existing Java libraries, make
+        it a great language to add to your repertoire.
+        It's not just a prototyping solution and many companies use Groovy for enterprise solutions including Netflix,
+        LinkedIn, and Mutual of Omaha.
+    </aside>
+</section>
+
+<section>
+    <ul>
+        <li>Open source -- maintained by <a href="http://www.pivotal.io/oss" target="_blank">Pivotal</a> and programmers
+            like you!
+        </li>
+        <li><a href="http://groovy-lang.org" target="_blank">http://groovy-lang.org</a></li>
+        <li>contribute: <a href="https://github.com/groovy/groovy-core" target="_blank">https://github.com/groovy/groovy-core</a>
+        </li>
+    </ul>
+    <aside class="notes">
+        Groovy is also open source. The repository for core is on github and anyone can submit a PR. It's under active
+        development and the community is pretty friendly and welcoming to newcomers.
+    </aside>
+</section>
+
+<section>
+    <h2>The Groovy Ecosystem</h2>
+    <ul class="column">
+        <li><img class="no-box inline-image" src="images/grails.jpg"/><a href="http://grails.org"
+                                                                         target="_blank"> Grails</a>
+        </li>
+        <li><img class="no-box inline-image" src="images/griffon.jpg"/><a
+                href="http://griffon.codehaus.org" target="_blank"> Griffon</a></li>
+        <li><img class="no-box inline-image" src="images/gradle.jpg"/><a
+                href="http://gradle.codehaus.org" target="_blank"> Gradle</a></li>
+    </ul>
+    <ul class="column">
+        <li><img class="no-box inline-image" src="images/missingImage.png"/><a
+                href="https://code.google.com/p/spock/" target="_blank"> Spock</a> and <a
+                href="http://www.gebish.org/">Geb</a></li>
+        <li><img class="no-box inline-image" src="images/ratpack.jpg"/><a href="https://ratpack.io"
+                                                                          target="_blank"> Ratpack</a>
+        </li>
+        <li><img class="no-box inline-image" src="images/missingImage.png"/> And Many More!</li>
+    </ul>
+    <aside class="notes">
+        Once you learn the Groovy language, you are open to a whole new world of technologies
+        including:
+        Grails (the most common web framework in the Groovy eco-system and what many confuse with
+        Groovy itself.)
+        Griffon a desktop framework
+        Gradle a popular build tool that can even be used for building android applications
+        Spock and Geb testing frame,works
+        Ratpack up and coming lightweight web framework (used for this presentation)
+    </aside>
+</section>
+
+<section>
+    <h2>Grails Architecture</h2>
+    <img class="no-box" src="images/GroovyStack.jpg"/>
+    <aside class="notes"/>
+    You may be wondering how all of this fits together.(explain graphic)
+    An important thing to note is that Groovy is compiled into
+    bytecode for the JVM. Groovy is NOT compiled into Java.
+    This is how groovy can be used in so many different applications. Also notice how a framework like Grails can sit on
+    top of and pull in existing Java libraries and frameworks
+    like Spring and Hibernate.
+    </aside>
+</section>
+
+<section>
+    <h2>When to use Groovy</h2>
+    <ul>
+        <li>existing java libraries</li>
+        <li>developers know java or another JVM language</li>
+        <li>quick prototyping</li>
+        <li>scripting</li>
+        <li>writing tests</li>
+    </ul>
+</section>
+
+<section>
+    <h2>When NOT to use Groovy</h2>
+    <ul>
+        <li>lots of legacy code in another language especially Ruby</li>
+        <li>need 'bare metal' level performance</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Scripting</h2>
+
+    <p>Console</p>
+    <img class="no-box" src="images/groovyConsole.png" height="350px"/>
+
+    <p>Shell</p>
+    <img class="no-box" src="images/groovyShell.png" height="200px"/>
+
+    <aside class="notes">
+        There are a few different ways to try out groovy. The first is the interactive swing console. If you're looking
+        for quick and dirty, you can also try the shell.
+    </aside>
+</section>
+
+<section>
+    <h2>Follow along</h2>
+
+    <p><a href="http://groovyconsole.appspot.com" target="_blank">http://groovyconsole.appspot.com</a></p>
+    <aside class="notes">
+        If you don't want to download groovy yet, you can try the interactive web console at groovyconsole.appspot.com.
+        Feel free to follow along if the wifi is any good in here.
+    </aside>
+</section>
+
+<section>
+    <h2>Things To Remember!</h2>
+    <ol>
+        <li>There is more than one way to do almost anything.</li>
+        <li>It's probably optional.
+            <ul>
+                <li>semi-colons</li>
+                <li>typing</li>
+                <li>parenthesis around parameters</li>
+                <li>return statements</li>
+            </ul>
+        </li>
+        <li>By default, the last command executed is what's returned.</li>
+    </ol>
+</section>
+
+<section>
+    <h2>Hello,World!</h2>
+        <pre><code data-trim contenteditable id="code">
+            println "Hello, World!"
+        </code></pre>
+        <pre><code id="result">
+            -> Hello, World!
+        </code></pre>
+    <aside class="notes">
+        You can do anything you can do in Java in Groovy. In fact, Almost all Java code is valid Groovy code. Groovy,
+        however, usually has a way to do things with less typing than Java.
+        One big thing you’ll notice is that in Groovy, you don’t always have to declare a function and then call it.
+        Since Groovy is a scripting language, you can just put commands outside of any function scope and it is valid
+        Groovy. Semicolons are unnecessary.
+    </aside>
+</section>
+
+<section>
+    <h2>Data Types</h2>
+    <ul>
+        <li>Strings</li>
+        <li>Collections
+            <ul>
+                <li>Lists</li>
+                <li>Maps</li>
+                <li>Ranges</li>
+            </ul>
+        </li>
+        <li>Closures</li>
+        <li>Def</li>
+    </ul>
+    <aside class="notes">
+        We will look at a few datatypes in this workshop: In addition to your normal primitives(int, bool, etc),
+        there are Strings, Collections, and Closures.
+        Collections include classes such as Lists and Maps. Groovy Lists correspond with Java ArrayLists and Groovy Maps
+        correspond with Java HashMaps.
+        Closures are pieces of functionality that you can pass around as data.
+
+        Groovy is optionally typed. When we don’t care what type a variable is or we want mixed typing, we can use def
+        instead of a data type.
+        Def, short for ‘define’, roughly translates to Java Object, the base class for all other classes.
+    </aside>
+</section>
+
+<section>
+    <h2>Strings</h2>
+
+    <p>(examples in console)</p>
+    <ul>
+        <li>Single Quoted</li>
+        <li>Double Quoted</li>
+        <li>Multi-line</li>
+    </ul>
+    <aside class="notes">
+        Groovy has many types of strings, but today we’ll go over the three main types: Single Quoted, Double Quoted and
+        Multi-Line Strings.
+        First the single quoted string is for plain text. For example, ‘Hello, World!’
+        Double Quotes can be used to inject code into the text of the string. For example, “Hello, (dollar) name”. Name is a
+        variable, the dollar sign tells Groovy to inject its value into the string.
+
+        If you need a particularly long section of text, use multi-line strings by denoting three quotes followed by
+        your text and ended by another three quotation marks.
+        Just like before, use single quotes for plain text and double quotes if you need to embed code.
+
+        You can manipulate Strings easily using the automatically generated String function split and the List function
+        join.
+
+        Pass a string to tokenize and it will split the String based on that as a delimiter. I heart Groovy is split on
+        the spaces and the heart to create two Strings, I and Groovy.
+
+        Pass a token to join and a list of Strings will be transformed with that token inserted as a separator. I,
+        heart, and Groovy can be transformed to the single String, I heart Groovy.
+    </aside>
+</section>
+
+<section>
+    <section>
+        <h2>Collections</h2>
+        <aside class="notes">
+            Collections are groups of values like a group of numbers.
+        </aside>
+    </section>
+
+    <section>
+        <h2>Lists</h2>
+        <p>(examples in console)</p>
+        <ul>
+            <li>definition</li>
+            <li>get/set value</li>
+            <li>append</li>
+            <li>multiply</li>
+        </ul>
+        <aside class="notes">
+            The first and simplest type of Groovy collection is a list. Lists can have elements of different types– the
+            same List can hold both Strings and integers.
+            To define a list, bound your list in square brackets and separate the items with commas.
+
+            To access elements of the list, use square brackets. Just like in Java, indices start at 0, so the index of
+            the number 2 is 2, not 3.
+            Here, we have changed the third element in the list to 3.
+
+            You can easily append elements onto the end of the list using the shovel operator, which is two “less than”
+            signs. To append means to add to the end.
+
+            Collections have many available methods including basic mathematic operations plus, minus, and multiply.
+            Here, I can use my list and multiply it by two. When you multiply the entire collection, it takes all of the
+            elements in the list and duplicates them.
+        </aside>
+    </section>
+
+    <section>
+        <h2>Maps</h2>
+        <p>(examples in console)</p>
+        <ul>
+            <li>definition</li>
+            <li>get/set by keys</li>
+            <li>get all keys/values</li>
+        </ul>
+        <aside class="notes">
+            Maps are like lists but with keys instead of numerical indices. The keys and values are separated by colons
+            then separated from other pairs with commas.
+
+            You can access the values in a Map using a dot then the keyname. This is like getting a member of a Java
+            class.
+            For example, we can do myMap dot val1 to get the String a. This works for both getters and setters.
+            To set the value for the key val4 to 5, we can use myMap.val4 = 5.
+
+            You can also separate out the keys and values by accessing the .values() and .keySet() methods on the map.
+            Here we see the values of myMap displayed as a list.
+        </aside>
+    </section>
+
+    <section>
+        <h2>Ranges</h2>
+        <pre><code>println (1..10)
+            -->[1,2,3,4,5,6,7,8,9,10]
+        </code></pre>
+        <pre><code>println (1..<10)
+            -->[1,2,3,4,5,6,7,8,9]</code></pre>
+        <aside class="notes">
+            Any time you have an incremental group of numbers, you can use a range. Ranges are specified inclusively
+            unless otherwise specified.
+        </aside>
+    </section>
+</section>
+
+<section>
+    <h2>Functions</h2>
+    <pre><code>
+        int double(x) {
+            x * 2
+        }
+    </code></pre>
+    <ul>
+        <li>Flexible, familiar syntax</li>
+        <li>Optional
+            <ul>
+                <li>parenthesis when calling functions</li>
+                <li>parameter typing</li>
+                <li>return statements</li>
+            </ul>
+        </li>
+    <aside class="notes">
+        In order to talk about our next data type closures, I should probably start with how functions work in general.
+        Function calls look very similar to other languages. If nothing else, I hope you remember these three things
+        about groovy.
+        Ok it's really just one. Almost everything is optional. Parenthesis around parameters are optional. Parameters
+        are optionally typed.
+        and lastly... remember return statements are optional. The last statement is returned (unless the return type is
+        void)
+    </aside>
+</section>
+
+<section>
+    <pre><code>
+    double(2)</code><code class="fragment">
+    --> 4 </code><code class="fragment">
+    double 8</code><code class="fragment">
+    --> 16</code></pre>
+    <aside class="notes">
+        Using our double function from before, here you can see optional parenthesis around parameters when calling the
+        function
+    </aside>
+</section>
+
+<section>
+    <h2>Closures</h2>
+    <p>Code as Data</p>
+    <p>(to the console!)</p>
+    <ul>
+        <li>code as data</li>
+        <li>definition</li>
+        <li>call</li>
+    </ul>
+    <aside class="notes">
+        Now, we’ll talk about closures. Closures are not completely unique to Groovy and other languages use similar
+        concepts.
+        Recently, Java 8, introduced a similar feature -- lambdas.
+
+        By definition, closures are code as data. That means that they are pieces of functionality that can be passed
+        around like variables including as a parameter to another function.
+
+        Here is the syntax for defining and using a closure. It is like defining a variable; we start with specifying a
+        type and a name.
+        After the equals sign we include the body of the function in curly braces. Unlike a standard function
+        definition,
+        parameters are included immediately after the first curly brace and before an arrow which indicates the start of
+        the body.
+        Multiple parameters are separated by commas and any default parameters are indicated with an equals followed by
+        the default value.
+
+        You can call a closure by using the built-in function called “call” followed by the parameter(s).
+        myClosure has two parameters, named name and year. You could have also have only one or no parameters at all.
+        Typing your parameters is also optional.
+
+        Just like with functions, return statements are optional. Unless otherwise specified, the last line of a closure
+        is what's returned.
+    </aside>
+</section>
+
+<section>
+    <h2>Object Oriented Programming</h2>
+    (examples in console)
+    <aside class="notes">
+        In addition to scripting, Groovy can also be used for object oriented programming.  I'll only do a brief overview here as this will
+        be covered in much more detail during the grails portion of the workshop.
+    </aside>
+</section>
+
+<section><h2>Groovy Truth</h2>
+    <p>False values</p>
+    <ul>
+        <li>Null</li>
+        <li>Zero</li>
+        <li>Empty Set</li>
+        <li>Empty String</li>
+    </ul>
+    <aside class="notes">
+        Before evaluating functions and other paradigms, it's important to note how Groovy handles logic.  Unlike other languages,
+        truth is very loosely defined.  Unless otherwise specified, the default values for are to evaluate null, zero, empty set,
+        and empty strings as false.  It's important to note the zero here when working with number values.
+    </aside>
+    </section>
+
+<section>
+    <h2>Loops and Special functions</h2>
+    <ul>
+        <li>Basic For Loop</li>
+        <li>Each</li>
+        <li>Collect</li>
+        <li>Spread Dot</li>
+    </ul>
+</section>
+
+
+<section>
+    <h2>Basic Loops</h2>
+    <pre><code>
+        List dl = [];
+        for(int i=1; i<4; i++){
+            dl.add(i * 2);
+        }
+        println dl;
+        --> [2,4,6]
+    </code></pre>
+    <pre><code class="fragment">
+        List dl = []
+        for(i in [1,2,3]) {
+        dl << i * 2
+        }
+        println dl
+        --> [2,4,6]
+    </code></pre>
+    <aside class="notes">
+        Basic Groovy for loops are very similar to Java for loops, but in Groovy, you can very easily iterate over a
+        list of things.
+        In Java, you’re restricted to iterating over a range of numbers.
+        So, you would have to iterate over the indices and then index into the list of numbers that you want to double.
+
+        In the Groovy loop, we declare the variable i to be our iterator. First we grab 2 from the list and set I equal
+        to it.
+        Then we double it. Then we grab 4 and set I equal to it, then 6. We could have done this same loop many ways in
+        Groovy.
+    </aside>
+</section>
+
+<section>
+    <h2>Each</h2>
+    <pre><code>Map m = [val1: 2, val2: 4, val3: 6]
+        List dl = []
+        m.each { key, value ->
+            dl << value * 2
+        }
+        println dl
+        --> [4, 8, 12]
+    </code></pre>
+    <aside class="notes">
+        You can iterate over every item of a List or Map using the method each.
+        Each is a function that takes a closure as a parameter and applies that closure to every item in the collection.
+        Here we have a Map with three key-value pairs.  In our each loop we separate the key and value for each pair
+        and then add only the new doubled value to our result list.  You’ll see it has the same result as our previous example.
+
+        You can see the each function’s equivalence as a loop. Each is basically a function that performs the closure
+        as the body of a for loop. Using each, we can avoid the boilerplate “for in” syntax.
+    </aside>
+</section>
+
+<section>
+    <h2>Collect</h2>
+    <pre><code>
+        Map m = [var1: 2, var2: 4, var3: 6]
+        List dl = m.collect { name, value ->
+            value * 2
+        }
+        println dl
+        --> [4, 8, 12]
+    </code></pre>
+    <aside class="notes">
+        In cases where we are aggregating results, we may want to use a collect statement instead of an each.
+        The effect is the same except that it collects all of your results for you rather than having to
+        automatically append the answer into your data structure.  Here we don’t have to initialize a new list for our
+        answer myDoubledList.  We just set it equal to the result of the .collect call.
+        Then, remembering that by default closures return the last executed statement, we can just leave it
+        as value * 2 and the results of doubling each item from our myList is saved in myDoubledList.
+    </aside>
+</section>
+
+<section>
+    <h2>Spread Dot</h2>
+    <pre><code>
+        (1..3).multiply(2)
+        -->[1,2,3,1,2,3]
+        (1..3)*.multiply(2)
+        --> [2,4,6]
+    </code></pre>
+    <aside class="notes">
+        If you are purely dealing with lists and single functions, Groovy has another unique function that makes code even shorter.
+        That function is Spread Dot.
+
+        Continuing with our myList example, we are going to add a spread dot at the end of the variable name.
+        This function takes the collection and applies the multiply function to each element of the collection individually rather than the collection as a whole.
+        This means we get similar results to our each and collect loops, but completely different results than when we multiplied the list as a whole times two.
+    </aside>
+</section>
+
+<section>
+    <h2>Try it!</h2>
+    <p>Let's groovy-fy this code</p>
+    <pre><code>
+        List l = [-1,2,-3,-17]
+        List al = []
+        for ( i in l ) {
+            al << i.abs()
+        }
+        println al
+        --> [1,2,3,17]
+        </code><code class="fragment">
+        [-1,2,-3,-17]*.abs()</code></pre>
+</section>
+
+<section>
+    <h2>Try it!</h2>
+    <p>Sum the numbers from 1 to 10</p>
+    <pre>option1: <code class="fragment">
+        int answer = 0
+        for (i in [1,2,3,4,5,6,7,8,9,10]) {
+        answer += i
+        }
+        println answer
+    </code>option2:<code class="fragment">
+        int answer = 0
+        (1..10).each {
+            answer = answer + it
+        }
+        println answer
+    </code>Bonus answer:<code class="fragment">
+        (1..10).sum()</code></pre>
+    <aside class="notes">
+        Ok. Time’s up.   Here are some of the possible solutions.
+
+        You could have written out the list and iterated through it.
+
+        You could have used each.
+
+        And if you were super sly and saw us using .multiply you might have suspected there was a .sum function and used that.
+    </aside>
+</section>
+
+<section>
+    <h2>Search</h2>
+    <pre><code>Map m = [val1: 2, val2: 4, val3: 6]</code></pre>
+    <p>find</p>
+    <pre><code>m.find{it.value % 2 == 0 && it.value % 3 != 0}
+    --> val1:2</code></pre>
+    <p>findAll</p>
+    <pre><code>m.findAll{it.value % 2 == 0 && it.value % 3 != 0}
+    --> [val1:2,val2:4]</code></pre>
+    <aside class="notes">
+        Find returns the first value in a collection for which the closure evaluates to true.
+        FindAll returns a collection of all matching values. It is the name of the default closure parameter.
+        If you don’t don’t declare any parameters, the item in the collection will be denoted by the variable named it.
+
+        In these examples, we look for any element in the list which is divisible by 2 but not by 3.
+        Find returns only the first key/value pair, and FindAll returns both pairs that fit this description.
+    </aside>
+</section>
+
+<section>
+    <h2>APIs</h2>
+    <p>(in console)</p>
+    <pre><code>
+    @Grab(group='org.codehaus.groovy.modules.http-builder',
+    module='http-builder', version='0.7.1')
+
+    import groovyx.net.http.RESTClient
+
+    def http = new RESTClient("http://api.icndb.com")
+
+    http.get(path: '/jokes/random/5', query: [exclude: 'explicit']) { resp, reader ->
+
+        reader.value.joke.each{
+            println it + '\n'
+        }
+    }
+    </code></pre>
+</section>
+
+<section>
+    <section>
+        <h2>File Procesing</h2>
+    </section>
+    <section>
+        <h2>Creating & Writing to Files</h2>
+            <pre><code>
+                def myFile = new File('foo.txt')
+                myFile.write 'hello, world!!\\n'
+                myFile.append('and hello universe!')
+            </code></pre>
+    </section>
+    <section>
+        <h2>Reading Files</h2>
+            <pre><code>
+                def myFile = new File('foo.txt')
+                myFile.eachLine { line ->
+                    def processedLine = line.replaceAll('hello','hi')
+                    println processedLine
+                }</code><code class="fragment">
+                --> hi, world!
+                --> and hi universe!
+            </code></pre>
+    </section>
+</section>
+
+<section>
+    <h2>Let's put it all together</h2>
+    <p>(group coding in console)</p>
+</section>
+
+<section>
+    <h2>Questions?</h2>
+    <p>Resources</p>
+    <ul><li><a href="http://groovy-lang.org" target="_blank">http://groovy-lang.og</a></li>
+    <li><a href="http://gr8ladies.org" target="_blank">http:/gr8ladies.org</a></li></ul>
+</section>
+
+</div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {
+                src: 'plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            }
+        ]
+    });
+
+</script>
+
+</body>
+</html>

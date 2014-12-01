@@ -1,0 +1,18 @@
+.no-box {
+    border:0 !important;
+}
+
+.horizontal-list-element {
+    height: 200px;
+    width: 200px;
+}
+
+.column {
+    list-style-type: none !important;
+}
+
+.inline-image {
+    height: 100px;
+    width: 100px;
+    margin: 0px !important;
+}
