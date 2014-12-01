@@ -1,7 +1,7 @@
-groovyatgr8ladiesICC14
+
 ======================
 
-presentation for the Iowa Code Camp 14 presentation: Groovy at Gr8Ladies
+Introduction to Groovy for the December Gr8Ladies Gr8Workshop
 
 To get started, from the command line, run: 
 
