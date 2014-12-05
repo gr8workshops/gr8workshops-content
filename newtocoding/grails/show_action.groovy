@@ -1,6 +1,11 @@
 def show() {
-    Employee employee = Employee.get(params.id)
-    Map m = [name: employee.name, title: employee.title, age: employee.age]
+    Sandwich sandwich = Sandwich.get(params.id)
+    Map m = [
+            name: sandwich.name,
+            breadSlices: sandwich.breadSlices,
+            tomatoes: sandwich.tomatoes,
+            meat: sandwich.meat
+    ]
 
     return m
 }
