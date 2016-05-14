@@ -1,0 +1,620 @@
+!!! 5
+//if IE 7
+  html(lang="en", class="no-js ie", data-ng-app="main", id="ng-app")
+//if IE 8
+  html(lang="en", class="no-js ie", data-ng-app="main", id="ng-app")
+//if IE 9
+  html(lang="en", class="no-js ie9", data-ng-app="main", id="ng-app")
+//if [(gt IE 9)|!(IE)] <!
+html(class="no-js", ng-app="main")
+  // <![endif]
+  head
+    meta(charset="utf-8")
+    title Introduction to Groovy
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    meta(name="apple-mobile-web-app-capable", content="yes")
+    meta(name="apple-mobile-web-app-status-bar-style", content="black-translucent")
+    meta(name="description", content="Reveal JS Template")
+    link(href="./assets/css/style.css", rel="stylesheet", type="text/css")
+
+  body
+    .reveal
+      .slides
+        section(data-state="index-slide")
+          h2 Introduction to Groovy
+          p
+          small by Jenn Strater <a href="http://twitter.com/codeJENNerator" target="_blank"><img style="border:none;margin-top:0px;box-shadow:none;" src="./assets/img/CompanyAndProductLogos/twitter.png"/>@codeJENNerator</a>
+        section(data-state="github-slide", class="github-section")
+          h1 <i class="fa fa-icon fa-github"></i>
+          p Current
+          p
+            a(href="https://github.com/gr8workshops/gr8workshops-content/tree/master/newtogroovy/introtogroovy",target="_blank") Slides(source)
+        section
+          h2 About Me
+          p Professional
+          ul.ul-no-style
+            li.
+              <img class="inline-img" src='./assets/img/opi-square-logo.png' style='vertical-align:middle;'>
+              Senior Consultant - <a href="http://objectpartners.com" target="_blank" style='vertical-align:middle'>Object Partners</a>
+            li.
+              <img class="inline-img" src='./assets/img/gr8ladies.png' style='vertical-align:middle;'>
+              Co-Founder - <a href="http://www.gr8ladies.org" target="_blank" style='vertical-align:middle'>Gr8Ladies</a>
+        section
+          h2 About Me
+          p Experience
+          img(src='./assets/img/techbooks.jpg', style="width: 60%;")
+          small source: http://tjvantoll.com/2014/12/29/so-you-want-to-write-a-tech-book/
+        section
+          h2 About Me
+          p Minneapolis, MN
+          p <img src='./assets/img/minnesota.png' style="border:none;margin-top:-25px;">
+          ul.ul-no-style Connect on Social Media
+            li <a href="https://twitter.com/codeJENNerator" target="_blank">Twitter</a> @codeJENNerator
+            li <a href="https://linkedin.com/in/jennstrater" target="_blank">LinkedIn</a> https://linkedin.com/in/jennstrater
+            li <a href="https://github.com/jlstrater" target="_blank">Github</a> https://github.com/jlstrater
+
+        section
+          h2 About YOU
+          ul
+            li Students
+            li Professional Developers
+            ul
+              li Java
+              li .NET
+              li PHP or Ruby
+              li JRuby, Scala, or Clojure
+              li Groovy
+
+        section
+          h2 Agenda
+          ul
+            li Background & Ecosystem
+            li Getting Started
+            li Concepts
+            ul
+              li Data Types
+              li Collections/Loops
+              li Functions
+              li Closures
+        section
+          h2 Agenda
+          ul
+            li Object Oriented Programming (OOP)
+            li Scripting
+            li File Processing
+            li APIs
+        section
+          img(src='./assets/img/groovy-logo.png', style="border:none;")
+          h2 Groovy
+          ul
+            li Dynamic, compiled language for the Java Virtual Machine(JVM).
+            li Interoperable with existing Java libraries
+            li Concise, easy to read code
+            li Used by many major companies including:
+              ul.ul-inline
+                li <img src='./assets/img/CompanyAndProductLogos/netflix.jpg' class='inline-img'/>
+                li <img src='./assets/img/CompanyAndProductLogos/bestBuy.jpg' class='inline-img'/>
+                li <img src='./assets/img/CompanyAndProductLogos/target.png' class='inline-img'/>
+                li <img src='./assets/img/CompanyAndProductLogos/wellsfargo.jpg' class='inline-img'/>
+                li <img src='./assets/img/CompanyAndProductLogos/mutualOfOmaha.jpg' class='inline-img'/>
+
+        section
+          h2 Open Source
+          p Apache
+          p <a href="http://groovy-lang.org" target="_blank">http://groovy-lang.org</a>
+          p To contribute: <a href="https://github.com/apache/incubator-groovy" target="_blank">https://github.com/apache/incubator-groovy</a>
+
+        section
+          h2 The Groovy Ecosystem
+          ul.ul-no-style
+            li <img class="inline-img" src="./assets/img/CompanyAndProductLogos/grails.jpg"/><a href="http://grails.org" target="_blank"> Grails</a>
+            li <img class="inline-img" src="./assets/img/CompanyAndProductLogos/griffon.jpg"/><a href="http://griffon.codehaus.org" target="_blank"> Griffon</a>
+            li <img class="inline-img" src="./assets/img/CompanyAndProductLogos/gradle.jpg"/><a href="http://gradle.codehaus.org" target="_blank"> Gradle</a></li>
+          ul.ul-no-style
+            li <img class="inline-img" src="./assets/img/CompanyAndProductLogos/missingImage.png"/><a href="https://code.google.com/p/spock/" target="_blank"> Spock</a> and <a href="http://www.gebish.org/">Geb</a></li>
+            li <img class="inline-img" src="./assets/img/CompanyAndProductLogos/ratpack.jpg"/><a href="https://ratpack.io" target="_blank"> Ratpack</a>
+            li <img class="inline-img" src="./assets/img/CompanyAndProductLogos/missingImage.png"/> And Many More!</li>
+
+        section
+          img(src="./assets/img/groovy-stack.jpg", width="75%")
+
+        section
+          h2 When to use Groovy
+          ul
+            li existing Java libraries
+            li developers know Java or another JVM language
+            li infrastructure to support JVMs
+            li quick prototyping
+            li scripting
+            li writing tests
+
+        section
+          h2 When Not to use Groovy
+          ul
+            li lots of legacy code in another language
+            li need 'bare metal' level performance
+
+        section
+          h2 Getting Started
+
+        section
+          ul
+            li Download Locally
+            p <a href="http://groovy-lang.org/download.html" target="_blank">http://groovy-lang.org/download.html</a>
+            li SDK Manager (formerly GVM)
+              a(href="http://sdkman.io/") http://sdkman.io/
+              pre.
+                <code>curl -s get.sdkman.io | bash</code>
+        section
+          h2 Groovy Shell
+          img(src="./assets/img/groovy-shell.png")
+
+        section
+          h2 Groovy Console
+          img(src="./assets/img/groovy-console.png")
+
+        section
+          h2 Web Console
+          p
+            a(href="http://groovyconsole.appspot.com/", target="_blank") http://groovyconsole.appspot.com/
+
+        section
+          h2 Things to Remember
+          ol
+            li There is more than one way to do almost anything.
+            li It's probably optional.
+              ul
+                li semi-colons
+                li typing
+                li parenthesis around parameters
+                li return statements
+            li By default, the last command executed is what's returned.
+
+        section
+          h2 Hello, World!
+          pre.
+            <code>groovy>println "Hello, Gr8Workshop!"
+
+            Hello, Gr8Workshop!
+            ===>null</code>
+        section
+          h2 Data Types
+          ul
+            li Optional Typing, NOT dynamic
+            li treated as objects
+            ul
+              li int treated like Integer
+        section
+          pre.
+            <code>int i = 10
+            println i.class.name
+             -> java.lang.Integer
+
+            Integer i = 20
+            println i.class.name
+             -> java.lang.Integer</code>
+        section
+          h2(style="text-transform:lowercase") def
+          p when no type is specified or for a flexible type
+          pre.
+            <code>def i = 10
+            println i * 2
+             -> 20
+
+            i = 'abc'
+            println i * 2
+             -> abcabc</code>
+        section
+          h2 Strings
+          p (examples in console)
+          ul
+            li Single Quoted
+            li Double Quoted
+            li Multi-line
+
+        section
+          h2 Collections
+        section
+          section
+            h2 Lists
+            p (examples in console)
+            ul
+              li definition
+              li get/set values
+              li append
+              li multiply
+          section
+            pre.
+              <code>List m = ['a', 'b', 2]
+              println m[2]
+              -> 2
+
+              m[2] = 3
+              println m
+              -> [a, b, 3]
+
+              m << 'c'
+              println m
+              -> [a, b, 3, c]
+
+              m.push(4)
+              -> [a, b, 3, c, 4]
+
+              m.pop()
+              -> 4</code>
+          section
+            pre.
+              <code>List m = ['a', 'b', 2]
+
+              m.multiply(2)
+               -> ['a', 'b', 2, 'a', 'b', 2]
+
+              m * 2
+               -> ['a', 'b', 2, 'a', 'b', 2]
+
+              m + 2
+               -> ['a', 'b', 2, 2]</code>
+        section
+          section
+            h2 Maps
+            p (examples in console)
+            ul
+              li definition
+              li get/set values
+              li get all keys/values
+          section
+            pre.
+              <code>Map m = [val1: 'a', val2: 'b', val3: 2]
+
+              println m.val1
+               -> a
+              println m['val3']
+               -> 2
+
+              m.val4 = 3
+              println m
+               -> [val1:a, val2:b, val3: 2, val4: 3]
+
+              println m.keySet()
+               -> [val1, val2, val3, val4]
+
+              println m.values()
+               -> [a, b, 2, 3]
+              </code>
+        section
+          h2 Ranges
+          pre.
+            <code>println (1..10)
+              -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code>
+          pre.
+            <code>println (1..<10)
+              -> [1, 2, 3, 4, 5, 6, 7, 8, 9]</code>
+        section
+          section
+            h2 Functions
+            pre.
+              <code>Integer timesTwo(x) {
+                x + x
+              }</code>
+            ul
+              li Flexible, familiar syntax
+              li Optional
+              ul
+                li Parenthesis when calling functions
+                li Parameter typing
+                li return statements
+          section
+            pre.
+              <code>println timesTwo(10)
+               -> 20
+              def result = timesTwo 10
+              println result
+               -> 20</code>
+        section
+          section
+            h2 Closures
+            p Code as Data
+            p (to the console)
+            ul
+              li definition
+              li calls
+          section
+            pre.
+              <code>Closure c = { name, year = 2016 ->
+                println "Hello, $name $year!"
+              }
+
+              c.call('Gr8Workshop')
+              -> "Hello, Gr8Workshop 2016!"
+
+              c('Gr8Workshop', 2017)
+              -> "Hello, Gr8Workshop 2017!"</code>
+        section
+          h2 Loops and Special Functions
+          ul
+            li Basic For Loop
+            li Each
+            li Collect
+            li Spread Dot
+
+        section
+          h2 Basic Loops
+          pre.
+            <code>List dl = []
+
+            for(Integer i = 1; i < 4; i++){
+              dl.add(i * 2)
+            }
+
+            println dl
+             -> [2, 4, 6]</code>
+          pre.
+            <code class="fragment">List dl = []
+
+            for(i in [1,2,3]) {
+              dl << i * 2
+            }
+
+            println dl
+             -> [2, 4, 6]</code>
+        section
+          h2 Each
+          pre.
+            <code>List sl = [1, 2, 3]
+            List dl = []
+            sl.each { it ->
+              dl << it * 2
+            }
+            println dl
+            -> [2, 4, 6]</code>
+        section
+          h2 Collect
+          pre.
+            <code>Map m = [va1: 1, var2: 2, var3: 3]
+
+            List dl = m.collect { key, value ->
+              value * 2
+            }
+
+            println dl
+             -> [2, 4, 6]</code>
+        section
+          h2 Spread Dot
+          pre.
+            <code>(1..3).multiply(2)</code><code class="fragment"> -> [1, 2, 3, 1, 2, 3]</code><code class="fragment">(1..3)*.multiply(2)</code><code class="fragment"> -> [2, 4, 6]</code>
+        section
+          h2 Try It!
+          p Let's groovy-fy this code
+          pre.
+            <code>List l = [-1,2,-3,-17]
+            List al = []
+            for ( i in l ) {
+              al << i.abs()
+            }
+            println al
+            --> [1,2,3,17]</code>
+          pre.
+            <code class="fragment">[-1,2,-3,-17]*.abs()</code>
+        section
+          h2 Try It!
+          p Print the sum of the numbers from 1 to 10
+          pre.
+            option 1:
+            <code class="fragment">Integer answer = 0
+            for(i in [1,2,3,4,5,6,7,8,9,10]) {
+              answer += i
+            }
+            println answer
+            </code>option 2:
+            <code class="fragment">Integer answer = 0
+            (1..10).each {
+              answer = answer + it
+            }
+            println answer</code>bonus answer:
+            <code class="fragment">println (1..10).sum()</code>
+        section
+          h3 Groovy Truth
+          p False values
+          ul
+            li null
+            li Empty Set
+            li Empty String
+            li Zero
+        section
+          h3 Equality
+          p <b>==</b> verifies value same as .equals()
+          p <b>is</b> verifies object identity
+        section
+          pre.
+            <code>List numbers = [0,1,2,3]
+            numbers.each {
+              if(it) {
+                println it
+              }
+            }
+
+            -> 1
+            -> 2
+            -> 3</code>
+        section
+          h2 Other Groovy Operators
+          ul
+            li Ternary Operator
+            pre.
+              <code>x ? return x : return 'something else'</code>
+            li Elvis Operator
+            pre.
+              <code>x ?: 'something else'</code>
+            li Null Safe
+            pre.
+              <code>myMap?.propertyA?.propertyB</code>
+        section
+          h2 Search
+          pre.
+            <code>Map m = [val1: 2, val2: 4, val3: 6]
+
+            m.find { it.value % 2 == 0 && it.value % 3 != 0 }
+            -> val1=2
+
+            m.findAll {it.value % 2 == 0 && it.value % 3 != 0 }
+            -> [val1:2, val2:4]
+            </code>
+        section
+          h3 Other List Methods
+          ul
+            li Any
+            pre.
+              <code>Map m = [val1: 2, val2: 4, val3: 6]
+              m.any { it.value % 2 == 0 }
+              -> true</code>
+            li Every
+            pre.
+              <code>m.every { it.value % 3 == 0 }
+              -> false</code>
+        section
+          section
+            h2 Object Oriented Programming (OOP)
+            pre.
+              <code>class Person {
+                String first
+                String last
+              }</code>
+          section
+            pre.
+              <code>Person me = new Person(first: 'Jenn', last: 'Strater')
+              println me.first
+              println me.last
+
+              -- add String company to class --
+              me.company = 'Object Partners'
+              println me.properties
+              -> [class:class Person, first:Jenn, company:Object Partners, last:Strater]</code>
+          section
+            pre.
+              <code>class Person {
+                String first
+                String last
+
+                String getFullName() {
+                  this.first + ' ' + this.last
+                }
+              }
+
+              Person me = new Person(first: 'Jenn', last: 'Strater')
+              println me.fullName
+               -> 'Jenn Strater'</code>
+        section
+          h2 Scripts
+          p (save previous script as people.groovy)
+          pre.
+            <code>groovy people.groovy
+            -> Jenn Strater</code>
+        section
+          h2 Script Parsing
+          pre.
+            <code>println doubledValue(10)
+
+            def doubledValue(x) {
+              x * 2
+            }</code>
+        section
+          section
+            h2 File Processing
+          section
+            h2 Creating and Writing to Files
+            pre.
+              <code>def myFile = new File('foo.txt')
+              myFile.write 'Hello, \n'
+              myFile.append('Gr8Workshop!')</code>
+            p foo.txt
+            pre.
+              <code>Hello,
+              Gr8Workshop!</code>
+        section
+          h2 Reading Files
+          pre.
+            <code>def myFile = new File('foo.txt')
+            myFile.eachLine { line ->
+              def processedLine = line.replaceAll('Hello', 'Hi')
+              println processedLine
+            }
+
+             -> Hi,
+             -> Gr8Workshop!</code>
+        section
+          section
+            h2 APIs
+            p (copy to console)
+            pre.
+              <code>@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1')
+              import groovyx.net.http.RESTClient
+              def http = new RESTClient("http://www.gr8ladies.org")
+              http.get(path: '/api/companies') { resp, reader ->
+                reader.sort { -it.percentageTotalWomen } // sort by percentage women in descending order
+                reader[0..4].each{ // only the first 5
+                  if(it.totalEmployees) { // if the value of total employees is not 0 (to eliminate companies that didn't report that field)
+                    println 'name:' + it.name
+                    println 'country:' + it.country
+                    println 'total employees: ' + it.totalEmployees
+                    println 'total men: '+ it.totalMen
+                    println 'total women: '+ it.totalWomen + '\n'
+                  }
+                }
+              }
+              return null // don't print the entire result at the end</code>
+          section
+            h2 APIs
+            p (copy to console)
+            pre.
+              <code>@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1')
+
+              import groovyx.net.http.RESTClient
+
+              def http = new RESTClient("http://api.icndb.com")
+
+              http.get(path: '/jokes/random/5', query: [exclude: 'explicit']) { resp, reader ->
+                reader.value.joke.each{
+                  println it + '\n'
+                }
+              }</code>
+        section
+          h3 Other Cool Groovy Things
+          ul
+            li Regex
+            li MetaClass
+            li Groovy for Android
+            li Compile Static Annotation
+        section
+          h2 Conclusions
+          ul Groovy
+            li provides the benefits of the JVM platform
+            li adds features to enhance productivity over Java
+            li is similar to other languages such as Ruby and Python
+        section
+          h2 References
+          ul
+            li Groovy in Action, 2nd Edition
+            li <a href="http://groovy-lang.org" target="_blank">groovy-lang.org</a>
+            li Practical Groovy <a href="https://pledbrook.github.io/practical-groovy-public/">Free e-book</a>
+        section
+          h3 Questions?
+          p <a href="http://twitter.com/codeJENNerator" target="_blank"><img style="border:none;margin:0px;box-shadow:none;" src="./assets/img/CompanyAndProductLogos/twitter.png"/>@codeJENNerator</a>
+          p jenn@gr8ladies.org
+    script(src="./assets/js/app.js")
+
+    // If the query includes 'print-pdf', use the PDF print sheet
+    script(type='text/javascript').
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './assets/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      } else if ( window.location.search.match( /print-paper/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './assets/css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+
