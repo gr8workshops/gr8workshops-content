@@ -95,15 +95,19 @@
             <li>Scripting</li>
             <li>File Processing</li>
             <li>APIs</li>
+            <li>MetaProgramming</li>
+            <li>Domain Specific Language (DSL)s</li>
           </ul>
         </section>
         <section><img src="./assets/img/groovy-logo.png" style="border:none;">
           <h2>Groovy</h2>
           <ul>
-            <li>Dynamic, compiled language for the Java Virtual Machine(JVM).</li>
-            <li>Interoperable with existing Java libraries</li>
-            <li>Concise, easy to read code</li>
-            <li>Used by many major companies including:
+            <li class="fragment">Dynamic, compiled language for the Java Virtual Machine(JVM).</li>
+            <li class="fragment">OPTIONALLY typed</li>
+            <li class="fragment">Interoperable with existing Java libraries</li>
+            <li class="fragment">Concise, easy to read code</li>
+            <li class="fragment">Ability to be statically compiled</li>
+            <li class="fragment">Used by many major companies including:
               <ul class="ul-inline">
                 <li><img src='./assets/img/CompanyAndProductLogos/netflix.jpg' class='inline-img'/></li>
                 <li><img src='./assets/img/CompanyAndProductLogos/bestBuy.jpg' class='inline-img'/></li>
@@ -115,10 +119,10 @@
           </ul>
         </section>
         <section>
-          <h2>Open Source</h2>
-          <p>Apache</p>
+          <h2>Open Source</h2><img src="./assets/img/apache_logo.png" style="border:none;background:none;box-shadow:none;">
           <p><a href="http://groovy-lang.org" target="_blank">http://groovy-lang.org</a></p>
-          <p>To contribute: <a href="https://github.com/apache/incubator-groovy" target="_blank">https://github.com/apache/incubator-groovy</a></p>
+          <h2><i class="fa fa-icon fa-github"></i></h2>
+          <p><a href="https://github.com/apache/groovy" target="_blank">https://github.com/apache/groovy</a></p>
         </section>
         <section>
           <h2>The Groovy Ecosystem</h2>
@@ -183,6 +187,7 @@
                 <li>semi-colons</li>
                 <li>typing</li>
                 <li>parenthesis around parameters</li>
+                <li>getters and setters</li>
                 <li>return statements</li>
               </ul>
             </li>
@@ -353,6 +358,14 @@ println result
             </ul>
           </section>
           <section>
+            <h2>Closures</h2>
+            <ul>
+              <li>Passed as an argument</li>
+              <li>Assigned to a variable</li>
+              <li>Returned from a function</li>
+            </ul>
+          </section>
+          <section>
             <pre><code>Closure c = { name, year = 2016 ->
   println "Hello, $name $year!"
 }
@@ -362,6 +375,35 @@ c.call('Gr8Workshop')
 
 c('Gr8Workshop', 2017)
 -> "Hello, Gr8Workshop 2017!"</code></pre>
+          </section>
+          <section>
+            <h2>Closure Scope</h2>
+            <table>
+              <tr>
+                <td>
+                  <p>this</p>
+                </td>
+                <td>
+                  <p>instance of the class where the closure was defined</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>owner</p>
+                </td>
+                <td>
+                  <p>usually the same as this unless declared inside another closure</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>delegate</p>
+                </td>
+                <td>
+                  <p>same as owner but can be reassigned when the closure is passed around</p>
+                </td>
+              </tr>
+            </table>
           </section>
         </section>
         <section>
@@ -617,10 +659,41 @@ http.get(path: '/jokes/random/5', query: [exclude: 'explicit']) { resp, reader -
           </section>
         </section>
         <section>
+          <h2>MetaProgramming</h2>
+          <h4>Extending a class</h4>
+          <pre><code>Number.metaClass.getDollars = { delegate as BigDecimal }
+
+Number.metaClass.getProperty = { String name ->
+  def rates = [euros: 1.1f, pesos: 0.063f]
+  delegate * (rates[name] as BigDecimal)
+}</code></pre>
+          <p>Adding different currencies together</p>
+          <pre><code>def total = 20.dollars + 40.euros + 200.pesos
+assert total == 76.60</code></pre>
+        </section>
+        <section>
+          <h2>MetaProgramming</h2>
+          <h4>Dynamic Methods</h4>
+          <pre><code>class Person {
+  def methodMissing(String name, args) {
+    if (name.startsWith('say')) {
+      String message = (name - 'say').trim()
+      println message
+    }
+  }
+}</code></pre>
+          <p>Trying out our dynamic method</p>
+          <pre><code>Person you = new Person()
+you.sayHello()
+you."say You are awesome!"()</code></pre>
+        </section>
+        <section>
+          <h2>Domain Specific Language (DSL)s</h2>
+        </section>
+        <section>
           <h3>Other Cool Groovy Things</h3>
           <ul>
             <li>Regex</li>
-            <li>MetaClass</li>
             <li>Groovy for Android</li>
             <li>Compile Static Annotation</li>
           </ul>
@@ -645,6 +718,10 @@ http.get(path: '/jokes/random/5', query: [exclude: 'explicit']) { resp, reader -
           <h3>Questions?</h3>
           <p><a href="http://twitter.com/codeJENNerator" target="_blank"><img style="border:none;margin:0px;box-shadow:none;" src="./assets/img/CompanyAndProductLogos/twitter.png"/>@codeJENNerator</a></p>
           <p>jenn@gr8ladies.org</p>
+        </section>
+        <section>
+          <h3>Exercises</h3>
+          <p><a href="https://github.com/gr8workshops/gr8workshops-content/blob/master/newtogroovy/introtogroovy/worksheets/FileBasedExercises.pdf">Handout</a></p>
         </section>
       </div>
     </div>
