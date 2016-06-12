@@ -83,14 +83,18 @@ html(class="no-js", ng-app="main")
             li Scripting
             li File Processing
             li APIs
+            li MetaProgramming
+            li Domain Specific Language (DSL)s
         section
           img(src='./assets/img/groovy-logo.png', style="border:none;")
           h2 Groovy
           ul
-            li Dynamic, compiled language for the Java Virtual Machine(JVM).
-            li Interoperable with existing Java libraries
-            li Concise, easy to read code
-            li Used by many major companies including:
+            li.fragment Dynamic, compiled language for the Java Virtual Machine(JVM).
+            li.fragment OPTIONALLY typed
+            li.fragment Interoperable with existing Java libraries
+            li.fragment Concise, easy to read code
+            li.fragment Ability to be statically compiled
+            li.fragment Used by many major companies including:
               ul.ul-inline
                 li <img src='./assets/img/CompanyAndProductLogos/netflix.jpg' class='inline-img'/>
                 li <img src='./assets/img/CompanyAndProductLogos/bestBuy.jpg' class='inline-img'/>
@@ -100,9 +104,10 @@ html(class="no-js", ng-app="main")
 
         section
           h2 Open Source
-          p Apache
+          img(src='./assets/img/apache_logo.png', style="border:none;background:none;box-shadow:none;")
           p <a href="http://groovy-lang.org" target="_blank">http://groovy-lang.org</a>
-          p To contribute: <a href="https://github.com/apache/incubator-groovy" target="_blank">https://github.com/apache/incubator-groovy</a>
+          h2 <i class="fa fa-icon fa-github"></i>
+          p <a href="https://github.com/apache/groovy" target="_blank">https://github.com/apache/groovy</a>
 
         section
           h2 The Groovy Ecosystem
@@ -145,6 +150,7 @@ html(class="no-js", ng-app="main")
               a(href="http://sdkman.io/") http://sdkman.io/
               pre.
                 <code>curl -s get.sdkman.io | bash</code>
+                <code>sdk install groovy</code>
         section
           h2 Groovy Shell
           img(src="./assets/img/groovy-shell.png")
@@ -167,6 +173,7 @@ html(class="no-js", ng-app="main")
                 li semi-colons
                 li typing
                 li parenthesis around parameters
+                li getters and setters
                 li return statements
             li By default, the last command executed is what's returned.
 
@@ -319,6 +326,12 @@ html(class="no-js", ng-app="main")
               li definition
               li calls
           section
+            h2 Closures
+            ul
+              li Passed as an argument
+              li Assigned to a variable
+              li Returned from a function
+          section
             pre.
               <code>Closure c = { name, year = 2016 ->
                 println "Hello, $name $year!"
@@ -329,6 +342,24 @@ html(class="no-js", ng-app="main")
 
               c('Gr8Workshop', 2017)
               -> "Hello, Gr8Workshop 2017!"</code>
+          section
+            h2 Closure Scope
+            table
+              tr
+                td
+                  p this
+                td
+                  p instance of the class where the closure was defined
+              tr
+                td
+                  p owner
+                td
+                  p usually the same as this unless declared inside another closure
+              tr
+                td
+                  p delegate
+                td
+                  p same as owner but can be reassigned when the closure is passed around
         section
           h2 Loops and Special Functions
           ul
@@ -578,10 +609,42 @@ html(class="no-js", ng-app="main")
                 }
               }</code>
         section
+          h2 MetaProgramming
+          h4 Extending a class
+          pre.
+            <code>Number.metaClass.getDollars = { delegate as BigDecimal }
+
+            Number.metaClass.getProperty = { String name ->
+              def rates = [euros: 1.1f, pesos: 0.063f]
+              delegate * (rates[name] as BigDecimal)
+            }</code>
+          p Adding different currencies together
+          pre.
+            <code>def total = 20.dollars + 40.euros + 200.pesos
+            assert total == 76.60</code>
+        section
+          h2 MetaProgramming
+          h4 Dynamic Methods
+          pre.
+            <code>class Person {
+              def methodMissing(String name, args) {
+                if (name.startsWith('say')) {
+                  String message = (name - 'say').trim()
+                  println message
+                }
+              }
+            }</code>
+          p Trying out our dynamic method
+          pre.
+            <code>Person you = new Person()
+            you.sayHello()
+            you."say You are awesome!"()</code>
+        section
+          h2 Domain Specific Language (DSL)s
+        section
           h3 Other Cool Groovy Things
           ul
             li Regex
-            li MetaClass
             li Groovy for Android
             li Compile Static Annotation
         section
@@ -600,6 +663,9 @@ html(class="no-js", ng-app="main")
           h3 Questions?
           p <a href="http://twitter.com/codeJENNerator" target="_blank"><img style="border:none;margin:0px;box-shadow:none;" src="./assets/img/CompanyAndProductLogos/twitter.png"/>@codeJENNerator</a>
           p jenn@gr8ladies.org
+        section
+          h3 Exercises
+          p <a href="https://github.com/gr8workshops/gr8workshops-content/blob/master/newtogroovy/introtogroovy/worksheets/FileBasedExercises.pdf">Handout</a>
     script(src="./assets/js/app.js")
 
     // If the query includes 'print-pdf', use the PDF print sheet

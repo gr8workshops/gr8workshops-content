@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html lang="en" data-ng-app="main" id="ng-app" class="no-js ie"></html>
+<![endif]-->
+<!--[if IE 8]>
+<html lang="en" data-ng-app="main" id="ng-app" class="no-js ie"></html>
+<![endif]-->
+<!--[if IE 9]>
+<html lang="en" data-ng-app="main" id="ng-app" class="no-js ie9"></html>
+<![endif]-->
+<!--if [(gt IE 9)|!(IE)] <!-->
+<html ng-app="main" class="no-js">
+  <!-- <![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>Gradle Basics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="Reveal JS Template">
+    <link href="./assets/css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-state="index-slide">
+          <h1>Gradle Basics</h1>
+          <p></p><small>by Jenn Strater <a href="http://twitter.com/codeJENNerator" target="_blank"><img style="border:none;margin-top:0px;box-shadow:none;" src="./assets/img/CompanyAndProductLogos/twitter.png"/>@codeJENNerator</a></small>
+        </section>
+        <section data-state="github-slide" class="github-section">
+          <h1><i class="fa fa-icon fa-github"></i></h1>
+          <p>Current</p>
+          <p><a href="https://github.com/gr8workshops/gr8workshops-content/tree/master/newtogroovy/gradlebasics" target="_blank">Slides(source)</a></p>
+        </section>
+        <section>
+          <h2>About Me</h2>
+          <p>Professional</p>
+          <ul class="ul-no-style">
+            <li>
+              <img class="inline-img" src='./assets/img/opi-square-logo.png' style='vertical-align:middle;'>
+              Senior Consultant - <a href="http://objectpartners.com" target="_blank" style='vertical-align:middle'>Object Partners</a>
+            </li>
+            <li>
+              <img class="inline-img" src='./assets/img/gr8ladies.png' style='vertical-align:middle;'>
+              Co-Founder - <a href="http://www.gr8ladies.org" target="_blank" style='vertical-align:middle'>Gr8Ladies</a>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>About Me</h2>
+          <p>Experience</p><img src="./assets/img/techbooks.jpg" style="width: 60%;"><small>source: http://tjvantoll.com/2014/12/29/so-you-want-to-write-a-tech-book/</small>
+        </section>
+        <section>
+          <h2>About Me</h2>
+          <p>Minneapolis, MN</p>
+          <p><img src='./assets/img/minnesota.png' style="border:none;margin-top:-25px;"></p>
+          <ul class="ul-no-style">Connect on Social Media
+            <li><a href="https://twitter.com/codeJENNerator" target="_blank">Twitter</a> @codeJENNerator</li>
+            <li><a href="https://linkedin.com/in/jennstrater" target="_blank">LinkedIn</a> https://linkedin.com/in/jennstrater</li>
+            <li><a href="https://github.com/jlstrater" target="_blank">Github</a> https://github.com/jlstrater</li>
+          </ul>
+        </section>
+        <section>
+          <h2>About YOU</h2>
+          <ul>
+            <li>Students</li>
+            <li>Professional Developers</li>
+            <ul>
+              <li>Java</li>
+              <li>.NET</li>
+              <li>PHP or Ruby</li>
+              <li>JRuby, Scala, or Clojure</li>
+              <li>Groovy</li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h2>Agenda</h2>
+          <ul>
+            <li>Intro to Gradle</li>
+            <li>Getting Started</li>
+            <li>Concepts</li>
+            <ul>
+              <li>Tasks</li>
+              <li>Custom Builds</li>
+              <li>Watchers/Auto-updates</li>
+            </ul>
+          </ul>
+        </section>
+        <section><img src="./assets/img/gradle-logo.png" style="border:none;background:none;box-shadow:none;">
+          <h2>Powerful Build Tool with:</h2>
+          <ul>
+            <li class="fragment">Groovy DSL</li>
+            <li class="fragment">Dependency Management</li>
+            <li class="fragment">Support for many languages/platforms</li>
+            <li class="fragment">Prolific Plugin Library</li>
+            <li class="fragment">A terrible website (<a href="http://gradle.com">gradle.com</a>)</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Gradle</h2>
+          <p>Used by many major companies including:</p>
+          <ul class="ul-inline">
+            <li><img src='./assets/img/CompanyAndProductLogos/netflix.jpg' class='inline-img'/></li>
+            <li><img src='./assets/img/CompanyAndProductLogos/linkedin-logo.png' class='inline-img'/></li>
+            <li><img src='./assets/img/CompanyAndProductLogos/android.png' class='inline-img'/></li>
+            <li><img src='./assets/img/CompanyAndProductLogos/twitter-logo.png' class='inline-img'/></li>
+            <li><img src='./assets/img/CompanyAndProductLogos/paypal-logo.png' class='inline-img'/></li>
+          </ul>
+        </section>
+        <section>
+          <h2>When to use Gradle</h2>
+          <ul>
+            <li class="fragment">Polyglot Builds</li>
+            <li class="fragment">Tooling supports Gradle</li>
+            <li class="fragment">Complex dependency management</li>
+            <li class="fragment">Concise, Readable Build Logic</li>
+            <li class="fragment">High Performance</li>
+            <li class="fragment">Enhanced Reporting</li>
+          </ul>
+        </section>
+        <section>
+          <h2>When Not to use Gradle</h2>
+          <ul>
+            <li>lots of legacy code in another build system</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Getting Started</h2>
+        </section>
+        <section>
+          <ul>
+            <li>Download Locally</li>
+            <p><a href="http://gradle.org/gradle-download" target="_blank">http://gradle.org/gradle-download/</a></p>
+            <li>SDK Manager (formerly GVM)
+              <pre><code>sdk install gradle</code></pre>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Gradle Command line</h2><img src="./assets/img/gradle-build.png">
+        </section>
+        <section>
+          <h2>Gradle Wrapper (suggested)</h2><img src="./assets/img/gradle-wrapper.png">
+        </section>
+        <section>
+          <h2>Gradle GUI</h2><img src="./assets/img/gradle-gui.png">
+        </section>
+        <section>
+          <h2>Terminology</h2>
+          <table>
+            <tr>
+              <td>task</td>
+              <td>an atomic piece of work</td>
+            </tr>
+            <tr>
+              <td>Project</td>
+              <td>collection of tasks</td>
+            </tr>
+            <tr>
+              <td>Build</td>
+              <td>one or more projects</td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <section>
+            <h2>My First Build File</h2>
+          </section>
+          <section>
+            <h3>manually create build.gradle</h3>
+          </section>
+          <section>
+            <pre><code>gradle init</code></pre>
+            <p>creates:</p>
+            <ul>
+              <li>build.gradle</li>
+              <li>gradle wrapper</li>
+              <li>settings.gradle</li>
+            </ul>
+          </section>
+          <section>
+            <h2>*TRY IT*</h2>
+            <pre><code>gradle init --type groovy-library</code></pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Gradle Tasks</h2>
+          </section>
+          <section>
+            <h2>Defining a task</h2>
+            <pre><code>task helloWorld {
+  doLast {
+    println 'Hello world'
+  }
+}</code></pre>
+          </section>
+          <section>
+            <h2>Task Phases</h2>
+            <table>
+              <tr>
+                <td><strong>Configuration</strong></td>
+                <td>run for all tasks everytime gradle is run</td>
+              </tr>
+              <tr>
+                <td><strong>Execution</strong></td>
+                <td>run only when a specific task is executed</td>
+              </tr>
+            </table>
+          </section>
+          <section>
+            <h2>Task Phase Example</h2>
+            <pre><code>task foo {
+  println 'Configuration phase'
+  doLast {
+    println 'Execution phase'
+  }
+}</code></pre>
+          </section>
+          <section>
+            <h2>Alternative Syntax</h2>
+            <h3><i class="fa fa-icon fa-exclamation-triangle"></i> Not recommended. For reference only.</h3>
+            <pre><code>task foo << {
+  println "Execution phase"
+}
+
+task bar {
+  println "Configuration phase"
+} << {
+  println "Execution phase"
+}</code></pre>
+          </section>
+        </section>
+        <section>
+          <h2><i class="fa fa-exclamation" aria-hidden="true" style="color:red;"></i>Order of Operations<i class="fa fa-exclamation" aria-hidden="true" style="color:red;"></i></h2>
+          <ol>
+            <li>mustRunAfter</li>
+            <li>shouldRunAfter</li>
+            <li>finalizedBy</li>
+            <li>dependsOn</li>
+          </ol>
+        </section>
+        <section>
+          <section>
+            <h2>Building Java and/or Groovy Projects</h2>
+          </section>
+          <section>
+            <h2>Plugins</h2>
+            <pre class="fragment"><code>apply plugin: 'groovy'</code></pre>
+            <pre class="fragment"><code>apply plugin: 'java'</code></pre>
+          </section>
+          <section>
+            <h2>Common Tasks</h2>
+            <table>
+              <tr>
+                <td><strong>assemble</strong></td>
+                <td>compiles and packages project (into a jar)</td>
+              </tr>
+              <tr>
+                <td><strong>check</strong></td>
+                <td>runs tests and static analysis tools (such as codenarc)</td>
+              </tr>
+              <tr>
+                <td><strong>build</strong></td>
+                <td>runs both assemble and check</td>
+              </tr>
+            </table>
+          </section>
+        </section>
+        <section>
+          <h2>Adding Dependencies</h2>
+          <pre><code>apply plugin: 'groovy'
+repositories {
+   mavenLocal()
+   mavenCentral()
+   jcenter()
+}
+dependencies {
+   compile 'org.codehaus.groovy:groovy:2.4.5'
+   testCompile group:'org.spockframework', name:'spock-core', version:'1.0-groovy-2.4'
+}</code></pre>
+        </section>
+        <section>
+          <h2>Dependency Configurations</h2>
+          <table>
+            <tr>
+              <td><strong>compile</strong></td>
+              <td>The dependencies required to compile the source</td>
+            </tr>
+            <tr>
+              <td><strong>runtime</strong></td>
+              <td>The dependencies required at runtime(includes compile time depenenncis).</td>
+            </tr>
+            <tr>
+              <td><strong>testCompile</strong></td>
+              <td>The additional dependencies required to compile the tests (includes compile time dependencies).</td>
+            </tr>
+            <tr>
+              <td><strong>testRuntime</strong></td>
+              <td>The dependencies required to run the tests (includes testCompile and runtime dependencies).</td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <section>
+            <h2>Custom Plugins</h2>
+          </section>
+          <section>
+            <h2>Creating a Plugin</h2>
+            <ul>
+              <li>apply from file</li>
+              <li>add plugin code in buildSrc</li>
+              <li>add a build dependency of published plugin</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Build Classpath</h2>
+            <h4><i class="fa fa-warning"></i> Build classpath is distinct from application classpath</h4>
+            <pre><code>buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.2'
+  }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy:2.4.5'
+}</code></pre>
+          </section>
+          <section>
+            <h2>Useful Plugins</h2>
+            <ul>
+              <li>Gradle Shadow Plugin (<i class="fa fa-icon fa-github"></i>johnrengelman/shadow)</li>
+              <li>Gradle SSH Plugin (<i class="fa fa-icon fa-github"></i>int128/gradle-ssh-plugin)</li>
+              <li>Gradle Asciidoctor Plugin (<i class="fa fa-icon fa-github"></i>asciidoctor/asciidoctor-gradle-plugin)</li>
+              <li>Gradle Codenarc Plugin (<i class="fa fa-icon fa-github"></i>codenarc/codenarc)</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Example Config - Asciidoctor</h2>
+            <pre><code>asciidoctor {
+  dependsOn test
+  sourceDir = file('src/docs')
+  outputDir "$projectDir/src/main/resources/public"
+  inputs.dir snippetsDir
+  backends 'html5'
+  attributes 'source-highlighter' : 'prettify',
+          'imagesdir':'images',
+          'toc':'left',
+          'icons': 'font',
+          'setanchors':'true',
+          'idprefix':'',
+          'idseparator':'-',
+          'docinfo1':'true',
+          'snippets': snippetsDir
+}</code></pre>
+          </section>
+          <section>
+            <h4>build.gradle</h4>
+            <pre><code>task publish(type: GradleBuild) {
+    dependsOn asciidoctor
+    buildFile = file('publish.gradle')
+    tasks = ['publishGhPages']
+}</code></pre>
+            <h4>publish.gradle</h4>
+            <pre><code>buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'org.ajoberstar:gradle-git:1.1.0'
+  }
+}
+
+apply plugin: 'org.ajoberstar.github-pages'
+
+githubPages {
+  repoUri = 'git@github.com:jlstrater/groovy-spring-boot-restdocs-example.git'
+  pages {
+    from(file('build/resources/main/public/html5'))
+  }
+}</code></pre>
+          </section>
+        </section>
+        <section>
+          <h3>Other Cool Gradle Things</h3>
+          <ul>
+            <li></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Conclusions</h2>
+          <ul>Gradle
+            <li>adds features to enhance productivity over other build systems</li>
+            <li>is easy to extend and customize</li>
+            <li>has extensive tooling with the gradle wrapper and IDE integration</li>
+          </ul>
+        </section>
+        <section>
+          <h2>References</h2>
+          <ul>
+            <li><a href="http://gradle.org" target="_blank">gradle.org</a></li>
+            <li><a href="http://gradle.org/books/">Free e-books from beginner to advanced</a></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Questions?</h3>
+          <p><a href="http://twitter.com/codeJENNerator" target="_blank"><img style="border:none;margin:0px;box-shadow:none;" src="./assets/img/CompanyAndProductLogos/twitter.png"/>@codeJENNerator</a></p>
+          <p>jenn@gr8ladies.org</p>
+        </section>
+        <section>
+          <h3>Exercises</h3>
+          <p><a href="https://github.com/gr8workshops/gr8workshops-content/blob/master/newtogroovy/introtogroovy/worksheets/FileBasedExercises.pdf">Handout</a></p>
+        </section>
+      </div>
+    </div>
+    <script src="./assets/js/app.js"></script>
+    <!-- If the query includes 'print-pdf', use the PDF print sheet-->
+    <script type="text/javascript">
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './assets/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      } else if ( window.location.search.match( /print-paper/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './assets/css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+      
+    </script>
+  </body>
+</html>
