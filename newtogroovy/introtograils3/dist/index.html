@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html lang="en" data-ng-app="main" id="ng-app" class="no-js ie"></html>
+<![endif]-->
+<!--[if IE 8]>
+<html lang="en" data-ng-app="main" id="ng-app" class="no-js ie"></html>
+<![endif]-->
+<!--[if IE 9]>
+<html lang="en" data-ng-app="main" id="ng-app" class="no-js ie9"></html>
+<![endif]-->
+<!--if [(gt IE 9)|!(IE)] <!-->
+<html ng-app="main" class="no-js">
+  <!-- <![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>Intro to Grails 3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="Reveal JS Template">
+    <link href="./assets/css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-state="index-slide">
+          <h1>Intro to Grails 3</h1>
+          <p></p><small>by Jenn Strater <a href="http://twitter.com/codeJENNerator" target="_blank"><img style="border:none;margin-top:0px;box-shadow:none;" src="./assets/img/CompanyAndProductLogos/twitter.png"/>@codeJENNerator</a></small>
+        </section>
+        <section data-state="github-slide" class="github-section">
+          <h1><i class="fa fa-icon fa-github"></i></h1>
+          <p>Current</p>
+          <p><a href="https://github.com/gr8workshops/gr8workshops-content/tree/master/newtogroovy/introtograils3" target="_blank">Slides(source)</a></p>
+        </section>
+        <section>
+          <h2>About Me</h2>
+          <p>Professional</p>
+          <ul class="ul-no-style">
+            <li>
+              <img class="inline-img" src='./assets/img/opi-square-logo.png' style='vertical-align:middle;'>
+              Senior Consultant - <a href="http://objectpartners.com" target="_blank" style='vertical-align:middle'>Object Partners</a>
+            </li>
+            <li>
+              <img class="inline-img" src='./assets/img/gr8ladies.png' style='vertical-align:middle;'>
+              Co-Founder - <a href="http://www.gr8ladies.org" target="_blank" style='vertical-align:middle'>Gr8Ladies</a>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>About Me</h2>
+          <p>Experience</p><img src="./assets/img/techbooks.jpg" style="width: 60%;"><small>source: http://tjvantoll.com/2014/12/29/so-you-want-to-write-a-tech-book/</small>
+        </section>
+        <section>
+          <h2>About Me</h2>
+          <p>Minneapolis, MN</p>
+          <p><img src='./assets/img/minnesota.png' style="border:none;margin-top:-25px;"></p>
+          <ul class="ul-no-style">Connect on Social Media
+            <li><a href="https://twitter.com/codeJENNerator" target="_blank">Twitter</a> @codeJENNerator</li>
+            <li><a href="https://linkedin.com/in/jennstrater" target="_blank">LinkedIn</a> https://linkedin.com/in/jennstrater</li>
+            <li><a href="https://github.com/jlstrater" target="_blank">Github</a> https://github.com/jlstrater</li>
+          </ul>
+        </section>
+        <section>
+          <h2>About YOU</h2>
+          <ul>
+            <li>Students</li>
+            <li>Professional Developers</li>
+            <ul>
+              <li>Java</li>
+              <li>.NET</li>
+              <li>PHP or Ruby</li>
+              <li>JRuby, Scala, or Clojure</li>
+              <li>Groovy</li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h2>Agenda</h2>
+          <ul>
+            <li>Intro to Grails</li>
+            <li>Getting Started</li>
+            <li>Concepts</li>
+            <ul>
+              <li>MVC architecture</li>
+              <li></li>
+            </ul>
+          </ul>
+        </section>
+        <section><img src="./assets/img/grails-logo.png" style="border:none;background:none;box-shadow:none;">
+          <h2>Powerful Groovy-based framework:</h2>
+          <ul>
+            <li class="fragment">Various Profiles including web, api, and angularjs</li>
+            <li class="fragment">Data-layer with GORM</li>
+            <li class="fragment">Generated code for quick start-up time</li>
+            <li class="fragment">Prolific Plugin Library</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Grails</h2>
+          <p>Used by many major companies including:</p>
+          <ul class="ul-inline">
+            <li><img src='./assets/img/CompanyAndProductLogos/netflix.jpg' class='inline-img'/></li>
+            <li><img src='./assets/img/CompanyAndProductLogos/linkedin-logo.png' class='inline-img'/></li>
+            <li><img src='./assets/img/CompanyAndProductLogos/bestBuy.jpg' class='inline-img'/></li>
+            <li><img src='./assets/img/CompanyAndProductLogos/target.png' class='inline-img'/></li>
+            <li><img src='./assets/img/CompanyAndProductLogos/wellsfargo.jpg' class='inline-img'/></li>
+          </ul>
+        </section>
+        <section>
+          <h2>When to use Grails</h2>
+          <ul>
+            <li class="fragment">Quick Start-up time</li>
+            <li class="fragment">Small, agile team and project</li>
+            <li class="fragment">Traditional Data persistence model</li>
+            <li class="fragment">REST APIs</li>
+            <li class="fragment">Microservice architecture</li>
+          </ul>
+        </section>
+        <section>
+          <h2>When Not to use Grails</h2>
+          <ul>
+            <li>lots of legacy code in another framework</li>
+            <li>Complex high performant systems</li>
+            <li>Non-traditional data persistence</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Getting Started</h2>
+        </section>
+        <section>
+          <ul>
+            <li>Download Locally</li>
+            <p><a href="https://grails.org/download.html" target="_blank">https://grails.org/download.html</a></p>
+            <li>SDK Manager (formerly GVM)
+              <pre><code>sdk install grails 3.0.17</code></pre>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Grails command line</h2><img src="./assets/img/slide-images/grails-commandline.png">
+        </section>
+        <section>
+          <h2>Grails console</h2><img src="./assets/img/slide-images/groovy-console.png">
+        </section>
+        <section>
+          <h2>Grails Applications</h2><img src="./assets/img/slide-images/grails-applications.png">
+        </section>
+        <section>
+          <h2>History of Grails</h2>
+          <ul>
+            <li>1.0 in Feb 2008</li>
+            <li>Grails 3.0 in Mar 2015</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Vertical Slice</h2>
+          <table>
+            <tr>
+              <td>javascript</td>
+              <td>- Dynamic behavior in the browser</td>
+            </tr>
+            <tr>
+              <td>servlets</td>
+              <td>- HTML page generation</td>
+            </tr>
+            <tr>
+              <td>controllers</td>
+              <td>- Application Form Controllers + Tests</td>
+            </tr>
+            <tr>
+              <td>command</td>
+              <td>- Display objects + Tests</td>
+            </tr>
+            <tr>
+              <td>validation</td>
+              <td>- Validation and constraints + Tests</td>
+            </tr>
+            <tr>
+              <td>services</td>
+              <td>- Service Layer + Tests</td>
+            </tr>
+            <tr>
+              <td>queries</td>
+              <td>- Data access + Tests</td>
+            </tr>
+            <tr>
+              <td>domain</td>
+              <td>- Domain Model + Tests</td>
+            </tr>
+            <tr>
+              <td>DDL</td>
+              <td>- Database Schema</td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <h2>Simplified Grails Application Stack</h2><img src="./assets/img/slide-images/simple-grails-stack.png">
+        </section>
+        <section>
+          <section>
+            <h2>Diving In</h2>
+          </section>
+          <section>
+            <h2>Creating an application</h2>
+            <pre><code>grails create-app questionApp</code></pre>
+          </section>
+          <section>
+            <h2>Open app folder</h2>
+            <pre><code>cd questionApp</code></pre>
+          </section>
+          <section>
+            <h2>Project Structure</h2><img src="./assets/img/slide-images/grails-folder-structure.png">
+          </section>
+          <section>
+            <h2>Generating a Domain Class</h2>
+            <pre><code>grails create-domain-class com.example.Question</code></pre>
+          </section>
+          <section>
+            <h2>Edit the Domain Class</h2>
+            <h4>grails-app/domain/com/example/Question.groovy</h4>
+            <pre><code>package com.example
+
+class Question {
+  String question
+  String answer
+  String userName
+  
+  static constraints = {
+  }
+}</code></pre>
+          </section>
+          <section>
+            <h2>Edit the Generated Test</h2>
+            <h4>src/test/groovy/com/example/QuestionSpec.groovy</h4>
+            <pre><code>import grails.test.mixin.TestFor
+import spock.lang.Specification
+
+@TestFor(Question)
+class QuestionSpec extends Specification {
+  def setup() {
+  }
+  
+  def cleanup() {
+  }
+  
+  void "test something"() {
+    expect:"fix me"
+    true == false
+  }
+}</code></pre>
+          </section>
+        </section>
+        <section>
+          <h2>Grails Command Line</h2>
+          <ul class="ul-no-style">
+            <li><code>grails clean</code></li>
+            <li><code>grails run-app</code></li>
+            <li><code>grails test-app</code></li>
+            <li><code>grails help</code></li>
+            <li><code>grails help 'target-name'</code></li>
+            <li><code>grails</code>
+              <ul class="ul-no-style">
+                <li>will enter you into the grails 'interactive mode' keeps the jvm running, speeds up grails scripts, and provides autocomplete</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Grails Scaffolding</h2>
+          <pre><code>grails generate-all com.example.Question</code></pre>
+          <ul class="ul-no-style">
+            <li>Gernates a set of standard CRUD endpoints</li>
+            <ul>
+              <li>Note the package name</li>
+              <li>include --force to overwrite existing files (if making changes)</li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h2>Conclusions</h2>
+          <ul>Grails
+            <li>makes prototyping fast and efficient</li>
+            <li>works well for standard web apps</li>
+          </ul>
+        </section>
+        <section>
+          <h2>References</h2>
+          <ul>
+            <li><a href="http://grails.org" target="_blank">grails.org</a></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Questions?</h3>
+          <p><a href="http://twitter.com/codeJENNerator" target="_blank"><img style="border:none;margin:0px;box-shadow:none;" src="./assets/img/CompanyAndProductLogos/twitter.png"/>@codeJENNerator</a></p>
+          <p>jenn@gr8ladies.org</p>
+        </section>
+        <section>
+          <h3>Exercises</h3>
+          <p><a href="https://github.com/gr8workshops/gr8workshops-content/blob/master/newtogroovy/introtograils/worksheets/GrailsExercises.pdf">Handout</a></p>
+        </section>
+      </div>
+    </div>
+    <script src="./assets/js/app.js"></script>
+    <!-- If the query includes 'print-pdf', use the PDF print sheet-->
+    <script type="text/javascript">
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './assets/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      } else if ( window.location.search.match( /print-paper/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './assets/css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+      
+    </script>
+  </body>
+</html>
