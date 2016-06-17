@@ -73,7 +73,10 @@ html(class="no-js", ng-app="main")
             li Concepts
             ul
               li MVC architecture
-              li
+              ul.ul-no-style
+                li Domain Classes
+                li Controllers
+                li GSPs
 
         section
           img(src='./assets/img/grails-logo.png', style="border:none;background:none;box-shadow:none;")
@@ -98,7 +101,7 @@ html(class="no-js", ng-app="main")
           ul
             li.fragment Quick Start-up time
             li.fragment Small, agile team and project
-            li.fragment Traditional Data persistence model
+            li.fragment Traditional data persistence model
             li.fragment REST APIs
             li.fragment Microservice architecture
 
@@ -107,7 +110,7 @@ html(class="no-js", ng-app="main")
           ul
             li lots of legacy code in another framework
             li Complex high performant systems
-            li Non-traditional data persistence
+            li Non-standard data persistence
 
         section
           h2 Getting Started
@@ -248,16 +251,179 @@ html(class="no-js", ng-app="main")
             ul
               li Note the package name
               li include --force to overwrite existing files (if making changes)
+        section
+          h2 Grails Scaffolding
+          p grails-app/controllers/com/example/QuestionController.groovy
+          p
+          p grails-app/views/question
+          ul.ul-no-style
+            li create.gsp
+            li edit.gsp
+            li index.gsp
+            li show.gsp
 
+          p src/test/groovy/com/example/QuestionControllerSpec.groovy
+
+        section
+          h2 Grails CRUD endpoints
+          table
+            tr
+              td index
+              td -Displays list of objects, default for /
+            tr
+              td show
+              td - Shows one object for a given index
+            tr
+              td create
+              td - Displays form to create new object
+            tr
+              td save
+              td - Saves new object
+            tr
+              td edit
+              td - Shows edit form
+            tr
+              td update
+              td - Updates existing object
+            tr
+              td delete
+              td - Deletes one object
+
+        section
+          h2 Running the app
+          pre.
+            <code>grails run-app</code>
+          p | Running Grails application
+          p | Server running. Browse to http://localhost:8080
+
+        section
+          h1 Demo
+
+        section
+          h2 Controllers
+          pre.
+            <code>def index(Integer max) {
+              params.max = Math.min(max ?: 10, 100)
+              respond Question.list(params), model:[questionCount: Question.count()]
+            }</code>
+        section
+          h2 Auto reloading
+          p Add to the QuestionController
+          pre.
+            <code>def hello() {
+              render "I am here!"
+            }</code>
+          p http://localhost:8080/question/hello
+        section
+          h2 From the Controller to the View
+          ul
+            li Grails is convention based
+            li For example, when the index action(/question/index) is called Grails looks in the views/question directory for a gsp named index.gsp
+        section
+          h2 URL Mappings
+          h4 grails-app/controllers/UrlMappings.groovy
+          pre.
+            <code>static mappings = {
+              "/$controller/$action?/$id?(.$format)?"{
+                constraints {
+                // apply constraints here
+                }
+              }
+                                "/"(view:"/index")
+              "500"(view:'/error')
+            }</code>
+        section
+          h2 Updating URL Mappings
+          pre <code>"/showQuestions" (controller: "question", action: "index")</code>
+          p http://localhost:8080/showQuestions
+
+        section
+          h2 Restarting the Application
+          p Better in recent versions, but still needs to happen occassionally
+          pre <code>grails run-app</code>
+        section
+          h2 Custom Controller Endpoints
+          p Go to /question/searchByUsername
+        section
+          h2 Add the method
+          pre.
+            <code>def searchByUsername() {
+              def questionInstanceList = Question.findAllByUsername('doug')
+              respond questionInstanceList, model: [questionInstanceCount: Question.count()]
+            }</code>
+        section
+          h2 Dynamic Finders
+          table
+            tr
+              td In List
+              td - in the list of given values
+            tr
+              td LessThan
+              td - less than a given value
+            tr
+              td LessThanEquals
+              td - less than or equal a give value
+            tr
+              td GreaterThan
+              td - greater than a given value
+            tr
+              td GreaterThanEquals
+              td - greater than or equal a given value
+            tr
+              td Like
+              td - equivalent to a SQL like expression
+            tr
+              td Ilike
+              td - case insensitive version of like
+            tr
+              td NotEqual
+              td - negates equality
+        section
+          h2 Dynamic Finders
+          table
+            tr
+              td InRange
+              td - between the values of a Groovy Range
+            tr
+              td Rlike
+              td - performs a Regexp LIKE in MySQL or Oracle otherwise falls back to Like
+            tr
+              td Between
+              td - between two values (requires two arguments)
+            tr
+              td IsNotNull
+              td - not a null value (no arguments)
+            tr
+              td IsNull
+              td - is a null value (no arguments)
+        section
+          h2 The Grails Console
+          pre.
+            <code>grails> console</code>
+
+        section
+          pre.
+            <code>import com.opi.Question
+
+            Question q1 = new Question()
+            Question q2 = new Question(
+              question: 'What?',
+              answer: 'Me worry.',
+              userName: 'doug'
+            )
+            q1.save()
+            q2.save()
+            Question.findAll()</code>
         section
           h2 Conclusions
           ul Grails
             li makes prototyping fast and efficient
             li works well for standard web apps
         section
-          h2 References
+          h2 Resources
           ul
             li <a href="http://grails.org" target="_blank">grails.org</a>
+            li <a href="http://stackoverflow.com/tags/grails/info target="_blank">StackOverflow</a>
         section
           h3 Questions?
           p <a href="http://twitter.com/codeJENNerator" target="_blank"><img style="border:none;margin:0px;box-shadow:none;" src="./assets/img/CompanyAndProductLogos/twitter.png"/>@codeJENNerator</a>
