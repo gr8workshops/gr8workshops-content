@@ -13,7 +13,7 @@
   <!-- <![endif]-->
   <head>
     <meta charset="utf-8">
-    <title>Intro to Grails 3</title>
+    <title>Building RESTful Services with Grails 3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -24,7 +24,7 @@
     <div class="reveal">
       <div class="slides">
         <section data-state="index-slide">
-          <h1>Intro to Grails 3</h1>
+          <h1>Building RESTful Web Services with Grails 3</h1>
           <p></p><small>by Jenn Strater <a href="http://twitter.com/codeJENNerator" target="_blank"><img style="border:none;margin-top:0px;box-shadow:none;" src="./assets/img/CompanyAndProductLogos/twitter.png"/>@codeJENNerator</a></small>
         </section>
         <section data-state="github-slide" class="github-section">
@@ -77,33 +77,23 @@
         <section>
           <h2>Agenda</h2>
           <ul>
-            <li>Intro to Grails</li>
+            <li>Intro to REST</li>
             <li>Getting Started</li>
             <li>Concepts</li>
             <ul>
-              <li>MVC architecture</li>
-              <li></li>
+              <li>endpoints</li>
+              <li>response formats</li>
+              <li>best practices</li>
             </ul>
           </ul>
         </section>
-        <section><img src="./assets/img/grails-logo.png" style="border:none;background:none;box-shadow:none;">
-          <h2>Powerful Groovy-based framework:</h2>
-          <ul>
-            <li class="fragment">Various Profiles including web, api, and angularjs</li>
-            <li class="fragment">Data-layer with GORM</li>
-            <li class="fragment">Generated code for quick start-up time</li>
-            <li class="fragment">Prolific Plugin Library</li>
-          </ul>
-        </section>
         <section>
-          <h2>Grails</h2>
-          <p>Used by many major companies including:</p>
-          <ul class="ul-inline">
-            <li><img src='./assets/img/CompanyAndProductLogos/netflix.jpg' class='inline-img'/></li>
-            <li><img src='./assets/img/CompanyAndProductLogos/linkedin-logo.png' class='inline-img'/></li>
-            <li><img src='./assets/img/CompanyAndProductLogos/bestBuy.jpg' class='inline-img'/></li>
-            <li><img src='./assets/img/CompanyAndProductLogos/target.png' class='inline-img'/></li>
-            <li><img src='./assets/img/CompanyAndProductLogos/wellsfargo.jpg' class='inline-img'/></li>
+          <h2>REST</h2>
+          <p>REpresentational State Transfer</p>
+          <ul>
+            <li>allow applications to talk to each other over HTTP</li>
+            <li>responses usually in JSON, XML, or both</li>
+            <li>HTTP methods GET, PUT, POST or DELETE</li>
           </ul>
         </section>
         <section>
@@ -112,8 +102,6 @@
             <li class="fragment">Quick Start-up time</li>
             <li class="fragment">Small, agile team and project</li>
             <li class="fragment">Traditional data persistence model</li>
-            <li class="fragment">REST APIs</li>
-            <li class="fragment">Microservice architecture</li>
           </ul>
         </section>
         <section>
@@ -125,353 +113,217 @@
           </ul>
         </section>
         <section>
-          <h2>Getting Started</h2>
-        </section>
-        <section>
-          <ul>
-            <li>Download Locally</li>
-            <p><a href="https://grails.org/download.html" target="_blank">https://grails.org/download.html</a></p>
-            <li>SDK Manager (formerly GVM)
-              <pre><code>sdk install grails 3.0.17</code></pre>
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h2>Grails command line</h2><img src="./assets/img/slide-images/grails-commandline.png">
-        </section>
-        <section>
-          <h2>Grails console</h2><img src="./assets/img/slide-images/groovy-console.png">
-        </section>
-        <section>
-          <h2>Grails Applications</h2><img src="./assets/img/slide-images/grails-applications.png">
-        </section>
-        <section>
-          <h2>History of Grails</h2>
-          <ul>
-            <li>1.0 in Feb 2008</li>
-            <li>Grails 3.0 in Mar 2015</li>
-          </ul>
-        </section>
-        <section>
-          <h2>Vertical Slice</h2>
-          <table>
-            <tr>
-              <td>javascript</td>
-              <td>- Dynamic behavior in the browser</td>
-            </tr>
-            <tr>
-              <td>servlets</td>
-              <td>- HTML page generation</td>
-            </tr>
-            <tr>
-              <td>controllers</td>
-              <td>- Application Form Controllers + Tests</td>
-            </tr>
-            <tr>
-              <td>command</td>
-              <td>- Display objects + Tests</td>
-            </tr>
-            <tr>
-              <td>validation</td>
-              <td>- Validation and constraints + Tests</td>
-            </tr>
-            <tr>
-              <td>services</td>
-              <td>- Service Layer + Tests</td>
-            </tr>
-            <tr>
-              <td>queries</td>
-              <td>- Data access + Tests</td>
-            </tr>
-            <tr>
-              <td>domain</td>
-              <td>- Domain Model + Tests</td>
-            </tr>
-            <tr>
-              <td>DDL</td>
-              <td>- Database Schema</td>
-            </tr>
-          </table>
-        </section>
-        <section>
-          <h2>Simplified Grails Application Stack</h2><img src="./assets/img/slide-images/simple-grails-stack.png">
-        </section>
-        <section>
           <section>
-            <h2>Diving In</h2>
+            <h2>Getting Started</h2>
           </section>
           <section>
-            <h2>Creating an application</h2>
-            <pre><code>grails create-app questionApp</code></pre>
+            <pre><code>grails create-app --profile=web-api --inplace</code></pre>
           </section>
-          <section>
-            <h2>Open app folder</h2>
-            <pre><code>cd questionApp</code></pre>
-          </section>
-          <section>
-            <h2>Project Structure</h2><img src="./assets/img/slide-images/grails-folder-structure.png">
-          </section>
-          <section>
-            <h2>Generating a Domain Class</h2>
-            <pre><code>grails create-domain-class com.example.Question</code></pre>
-          </section>
-          <section>
-            <h2>Edit the Domain Class</h2>
-            <h4>grails-app/domain/com/example/Question.groovy</h4>
-            <pre><code>package com.example
+        </section>
+        <section>
+          <h2>Domain Classes as REST Resources</h2>
+          <pre><code>grails> create-domain-resource com.example.Book</code></pre>
+        </section>
+        <section>
+          <h2>Domain Classes as REST Resources</h2>
+          <pre><code>import grails.rest.*
 
-class Question {
-  String question
-  String answer
-  String userName
-  
-  static constraints = {
+@Resource(uri='/books')
+  class Book {
+    String title
+    
+    static constraints = {
+      title blank:false
   }
 }</code></pre>
-          </section>
-          <section>
-            <h2>Edit the Generated Test</h2>
-            <h4>src/test/groovy/com/example/QuestionSpec.groovy</h4>
-            <pre><code>import grails.test.mixin.TestFor
-import spock.lang.Specification
-
-@TestFor(Question)
-class QuestionSpec extends Specification {
-  def setup() {
-  }
-  
-  def cleanup() {
-  }
-  
-  void "test something"() {
-    expect:"fix me"
-    true == false
-  }
-}</code></pre>
-          </section>
+          <p>Much like scaffolding, this is great for demos but not so much for real-world production apps.</p>
         </section>
         <section>
-          <h2>Grails Command Line</h2>
-          <ul class="ul-no-style">
-            <li><code>grails clean</code></li>
-            <li><code>grails run-app</code></li>
-            <li><code>grails test-app</code></li>
-            <li><code>grails help</code></li>
-            <li><code>grails help 'target-name'</code></li>
-            <li><code>grails</code>
-              <ul class="ul-no-style">
-                <li>will enter you into the grails 'interactive mode' keeps the jvm running, speeds up grails scripts, and provides autocomplete</li>
-              </ul>
-            </li>
-          </ul>
+          <h2>Default Responses</h2>
+          <p>*newer versions JSON, older versions default to XML*</p>
+          <pre><code>@Resource(uri='/books', formats=['json', 'xml'])</code></pre>
+          <p>Specify all the formats the resource should expose. All formats available are in Config.groovy -> grails.mime.types</p>
         </section>
         <section>
-          <h2>Grails Scaffolding</h2>
-          <pre><code>grails generate-all com.example.Question</code></pre>
-          <ul class="ul-no-style">
-            <li>Gernates a set of standard CRUD endpoints</li>
+          <h2>@RESOURCE</h2>
+          <p>The transformation will automatically register the necessary RESTful URL mapping and create a controller called BookController.</p>
+          <p>Enables all of the HTTP method verbs on the resource</p>
+          <p>Make @Resource read only</p>
+          <pre><code>@Resource(uri='/books', readOnly=true)</code></pre>
+        </section>
+        <section>
+          <h2>Removing some of the magic</h2>
+          <p>Specify the URL mapping in UrlMappings.groovy</p>
+          <pre><code>"/books"(resources:'book')</code></pre><img src="./assets/img/slide-images/REST-routes.png">
+        </section>
+        <section>
+          <h2>URL Mappings</h2>
+          <ul>
+            <li>Exclude delete and update actions</li>
             <ul>
-              <li>Note the package name</li>
-              <li>include --force to overwrite existing files (if making changes)</li>
+              <li>"/books"(resources:'book', excludes:['delete', 'update'])</li>
+            </ul>
+            <li>Include only the index and show actions</li>
+            <ul>
+              <li>"/books"(resources:'book', includes:['index', 'show'])</li>
+            </ul>
+            <li>Single Resource - there is only 1 possible object in the database</li>
+            <ul>
+              <li>"/book"(resource:'book')</li>
             </ul>
           </ul>
         </section>
         <section>
-          <h2>Grails Scaffolding</h2>
-          <p>grails-app/controllers/com/example/QuestionController.groovy</p>
-          <p></p>
-          <p>grails-app/views/question</p>
-          <ul class="ul-no-style">
-            <li>create.gsp</li>
-            <li>edit.gsp</li>
-            <li>index.gsp</li>
-            <li>show.gsp</li>
-          </ul>
-          <p>src/test/groovy/com/example/QuestionControllerSpec.groovy</p>
-        </section>
-        <section>
-          <h2>Grails CRUD endpoints</h2>
-          <table>
-            <tr>
-              <td>index</td>
-              <td>-Displays list of objects, default for /</td>
-            </tr>
-            <tr>
-              <td>show</td>
-              <td>- Shows one object for a given index</td>
-            </tr>
-            <tr>
-              <td>create</td>
-              <td>- Displays form to create new object</td>
-            </tr>
-            <tr>
-              <td>save</td>
-              <td>- Saves new object</td>
-            </tr>
-            <tr>
-              <td>edit</td>
-              <td>- Shows edit form</td>
-            </tr>
-            <tr>
-              <td>update</td>
-              <td>- Updates existing object</td>
-            </tr>
-            <tr>
-              <td>delete</td>
-              <td>- Deletes one object</td>
-            </tr>
-          </table>
-        </section>
-        <section>
-          <h2>Running the app</h2>
-          <pre><code>grails run-app</code></pre>
-          <p>| Running Grails application</p>
-          <p>| Server running. Browse to http://localhost:8080</p>
-        </section>
-        <section>
-          <h1>Demo</h1>
-        </section>
-        <section>
-          <h2>Controllers</h2>
-          <pre><code>def index(Integer max) {
-  params.max = Math.min(max ?: 10, 100)
-  respond Question.list(params), model:[questionCount: Question.count()]
+          <h2>Nested Mappings</h2>
+          <p>You can also nest regular URL mappings within a resource mapping</p>
+          <pre><code>"/books"(resources: "book") {
+  "/publisher"(controller:"publisher", method:"GET")
 }</code></pre>
+          <p>Maps /books/1/publisher to PublisherController index method</p>
         </section>
         <section>
-          <h2>Auto reloading</h2>
-          <p>Add to the QuestionController</p>
-          <pre><code>def hello() {
-  render "I am here!"
-}</code></pre>
-          <p>http://localhost:8080/question/hello</p>
+          <h2>Linking from GSP to REST Resources</h2>
+          <pre><code><g:link resource="${book}">My Link</g:link></code></pre>
         </section>
         <section>
-          <h2>From the Controller to the View</h2>
-          <ul>
-            <li>Grails is convention based</li>
-            <li>For example, when the index action(/question/index) is called Grails looks in the views/question directory for a gsp named index.gsp</li>
-          </ul>
+          <h2>Exceptions</h2>
+          <p>Currently g:link does not work with DELETE action and most browsers do not support sending the DELETE method directly</p>
+          <p>The best way to accomplish this is to use a form submit:</p>
+          <pre><code><form action="/book/2" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+</form></code></pre>
         </section>
         <section>
-          <h2>URL Mappings</h2>
-          <h4>grails-app/controllers/UrlMappings.groovy</h4>
-          <pre><code>static mappings = {
-  "/$controller/$action?/$id?(.$format)?"{
-    constraints {
-    // apply constraints here
-    }
-  }
-                    "/"(view:"/index")
-  "500"(view:'/error')
-}</code></pre>
+          <h2>Try it!</h2>
+          <p>Make the User domain a REST resource</p>
+          <p>Verify its working by going to:</p>
+          <p>http://localhost:8080/questionApp/users.json</p>
         </section>
         <section>
-          <h2>Updating URL Mappings</h2>
-          <pre><code>"/showQuestions" (controller: "question", action: "index")</code></pre>
-          <p>http://localhost:8080/showQuestions</p>
-        </section>
-        <section>
-          <h2>Restarting the Application</h2>
-          <p>Better in recent versions, but still needs to happen occassionally</p>
-          <pre><code>grails run-app</code></pre>
-        </section>
-        <section>
-          <h2>Custom Controller Endpoints</h2>
-          <p>Go to /question/searchByUsername</p>
-        </section>
-        <section>
-          <h2>Add the method</h2>
-          <pre><code>def searchByUsername() {
-  def questionInstanceList = Question.findAllByUsername('doug')
-  respond questionInstanceList, model: [questionInstanceCount: Question.count()]
-}</code></pre>
-        </section>
-        <section>
-          <h2>Dynamic Finders</h2>
-          <table>
-            <tr>
-              <td>In List</td>
-              <td>- in the list of given values</td>
-            </tr>
-            <tr>
-              <td>LessThan</td>
-              <td>- less than a given value</td>
-            </tr>
-            <tr>
-              <td>LessThanEquals</td>
-              <td>- less than or equal a give value</td>
-            </tr>
-            <tr>
-              <td>GreaterThan</td>
-              <td>- greater than a given value</td>
-            </tr>
-            <tr>
-              <td>GreaterThanEquals</td>
-              <td>- greater than or equal a given value</td>
-            </tr>
-            <tr>
-              <td>Like</td>
-              <td>- equivalent to a SQL like expression</td>
-            </tr>
-            <tr>
-              <td>Ilike</td>
-              <td>- case insensitive version of like</td>
-            </tr>
-            <tr>
-              <td>NotEqual</td>
-              <td>- negates equality</td>
-            </tr>
-          </table>
-        </section>
-        <section>
-          <h2>Dynamic Finders</h2>
-          <table>
-            <tr>
-              <td>InRange</td>
-              <td>- between the values of a Groovy Range</td>
-            </tr>
-            <tr>
-              <td>Rlike</td>
-              <td>- performs a Regexp LIKE in MySQL or Oracle otherwise falls back to Like</td>
-            </tr>
-            <tr>
-              <td>Between</td>
-              <td>- between two values (requires two arguments)</td>
-            </tr>
-            <tr>
-              <td>IsNotNull</td>
-              <td>- not a null value (no arguments)</td>
-            </tr>
-            <tr>
-              <td>IsNull</td>
-              <td>- is a null value (no arguments)</td>
-            </tr>
-          </table>
-        </section>
-        <section>
-          <h2>The Grails Console</h2>
-          <pre><code>grails> console</code>
-</pre>
-        </section>
-        <section>
-          <pre><code>import com.opi.Question
+          <h2>Versioning</h2>
+          <p>Using the URI to version APIs</p>
+          <pre><code>"/books/v1"(resources:"book", namespace:'v1')
+"/books/v2"(resources:"book", namespace:'v2')</code></pre>
+          <p>That will match the following controllers:</p>
+          <pre><code>package myapp.v1
 
-Question q1 = new Question()
-Question q2 = new Question(
-  question: 'What?',
-  answer: 'Me worry.',
-  userName: 'doug'
-)
-q1.save()
-q2.save()
-Question.findAll()</code></pre>
+class BookController {
+  static namespace = 'v1'
+}</code>
+<code>
+package myapp.v2
+
+class BookController {
+  static namespace = 'v2'
+}</code></pre>
+        </section>
+        <section>
+          <h2>Url Versioning</h2>
+          <p>This approach has the disadvantage of requiring two different URI namespaces for your API.</p>
+          <p>Discouraged in favor of Hypermedia</p>
+        </section>
+        <section>
+          <h2>Accept Header</h2>
+          <pre><code>"/books"(version:'1.0', resources:"book", namespace:'v1')
+       "/books"(version:'2.0', resources:"book", namespace:'v2')</code></pre>
+          <p>Clients pass which version they need</p>
+          <pre><code>>curl -i -H "Accept-Version: 1.0" -X GET http://localhost:8080/books</code></pre>
+          <p>Still need 2 namespaces</p>
+        </section>
+        <section>
+          <h2>REST CONTROLLER SUPER CLASS</h2>
+          <p>Going beyond @Resource</p>
+          <pre><code>class BookController extends RestfulController {
+  static responseFormats = ['json', 'xml']
+  
+  BookController() {
+      super(Book)
+  }
+  
+  @Override
+  protected Book queryForResource(Serializable id) {
+     Book.where {
+          id == id && author.id = params.authorId
+     }.find()
+  }
+}</code></pre>
+        </section>
+        <section>
+          <h2>ROLL YOUR OWN</h2>
+          <p>Don’t have to use RestfulController</p>
+          <p>Create your own. For examples look at the scaffolding that is created by</p>
+          <pre><code>grails generate-controller</code></pre>
+          <p>The big win is the respond method</p>
+        </section>
+        <section>
+          <h2>MODIFY RESPONSE RENDER</h2>
+          <p>Custom Renderers allow you to include/exclude properties from a domain</p>
+          <p>Register custom renderers in conf/spring/resources.groovy</p>
+          <pre><code>beans = {
+  bookRenderer(XmlRenderer, Book) {
+    includes = ['title']
+    excludes = ['isbn']
+  }
+}</code></pre>
+        </section>
+        <section>
+          <p>Grails’ Converters have a registered ObjectMarshaller</p>
+          <p>Register custom marshaller in BootStrap.init</p>
+          <pre><code>JSON.registerObjectMarshaller(Book) {
+  def map = [:]
+  map['titl'] = it.title
+  map['auth'] = it.author
+  return map
+}</code></pre>
+        </section>
+        <section>
+          <p>Renderers use Converters under the covers as JSON, as XML.</p>
+          <p>When implementing a custom renderer you could use Jackson, Gson, or any Java library</p>
+          <p>Converters are tied to Grails’ own marshalling implementation</p>
+        </section>
+        <section>
+          <h2>Try IT!</h2>
+          <p>Modify the response for the User domain to only show the username, firstName, lastName and email</p>
+          <p>You can do either a renderer or marshaller</p>
+        </section>
+        <section>
+          <h2>Solution 1</h2>
+          <pre><code>JSON.registerObjectMarshaller(User) {
+  def map= [:]
+    map['username'] = it.username
+    map['firstName'] = it.firstName
+    map['lastName'] = it.lastName
+    map['email'] = it.email
+  return map
+}</code></pre>
+        </section>
+        <section>
+          <h2>Solution 2</h2>
+          <pre><code>import grails.rest.render.xml.*
+
+beans = {
+  userRenderer(XmlRenderer, com.example.User) {
+    includes = ['firstName', 'lastName', 'username', 'email']
+  }
+}</code></pre>
+        </section>
+        <section>
+          <h2></h2>
         </section>
         <section>
           <h2>Conclusions</h2>
           <ul>Grails
             <li>makes prototyping fast and efficient</li>
             <li>works well for standard web apps</li>
+            <li>handles REST defaults easily</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Next Steps</h2>
+          <ul>
+            <li>Spring Security</li>
+            <li>Documentation</li>
+            <li>Tests</li>
           </ul>
         </section>
         <section>
@@ -485,10 +337,6 @@ Question.findAll()</code></pre>
           <h3>Questions?</h3>
           <p><a href="http://twitter.com/codeJENNerator" target="_blank"><img style="border:none;margin:0px;box-shadow:none;" src="./assets/img/CompanyAndProductLogos/twitter.png"/>@codeJENNerator</a></p>
           <p>jenn@gr8ladies.org</p>
-        </section>
-        <section>
-          <h3>Exercises</h3>
-          <p><a href="https://github.com/gr8workshops/gr8workshops-content/blob/master/newtogroovy/introtograils/worksheets/GrailsExercises.pdf">Handout</a></p>
         </section>
       </div>
     </div>

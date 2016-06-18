@@ -78,7 +78,7 @@ html(class="no-js", ng-app="main")
         section
           h2 REST
           p REpresentational State Transfer
-          ul.ul-inline
+          ul
             li allow applications to talk to each other over HTTP
             li responses usually in JSON, XML, or both
             li HTTP methods GET, PUT, POST or DELETE
@@ -104,12 +104,10 @@ html(class="no-js", ng-app="main")
           section
             pre.
               <code>grails create-app --profile=web-api --inplace</code>
-
         section
           h2 Domain Classes as REST Resources
           pre.
             <code>grails> create-domain-resource com.example.Book</code>
-
         section
           h2 Domain Classes as REST Resources
           pre.
@@ -131,10 +129,177 @@ html(class="no-js", ng-app="main")
             <code>@Resource(uri='/books', formats=['json', 'xml'])</code>
           p Specify all the formats the resource should expose. All formats available are in Config.groovy -> grails.mime.types
         section
+          h2 @RESOURCE
+          p The transformation will automatically register the necessary RESTful URL mapping and create a controller called BookController.
+          p Enables all of the HTTP method verbs on the resource
+          p Make @Resource read only
+          pre.
+            <code>@Resource(uri='/books', readOnly=true)</code>
+        section
+          h2 Removing some of the magic
+          p Specify the URL mapping in UrlMappings.groovy
+          pre <code>"/books"(resources:'book')</code>
+          img(src='./assets/img/slide-images/REST-routes.png')
+
+        section
+          h2 URL Mappings
+          ul
+            li Exclude delete and update actions
+            ul
+              li "/books"(resources:'book', excludes:['delete', 'update'])
+            li Include only the index and show actions
+            ul
+              li "/books"(resources:'book', includes:['index', 'show'])
+            li Single Resource - there is only 1 possible object in the database
+            ul
+              li "/book"(resource:'book')
+        section
+          h2 Nested Mappings
+          p You can also nest regular URL mappings within a resource mapping
+          pre.
+            <code>"/books"(resources: "book") {
+              "/publisher"(controller:"publisher", method:"GET")
+            }</code>
+          p Maps /books/1/publisher to PublisherController index method
+        section
+          h2 Linking from GSP to REST Resources
+          pre <code><g:link resource="${book}">My Link</g:link></code>
+        section
+          h2 Exceptions
+          p Currently g:link does not work with DELETE action and most browsers do not support sending the DELETE method directly
+          p The best way to accomplish this is to use a form submit:
+          pre.
+            <code><form action="/book/2" method="post">
+              <input type="hidden" name="_method" value="DELETE">
+            </form></code>
+        section
+          h2 Try it!
+          p Make the User domain a REST resource
+          p Verify its working by going to:
+          p http://localhost:8080/questionApp/users.json
+        section
+          h2 Versioning
+          p Using the URI to version APIs
+          pre.
+            <code>"/books/v1"(resources:"book", namespace:'v1')
+            "/books/v2"(resources:"book", namespace:'v2')</code>
+          p That will match the following controllers:
+          pre.
+            <code>package myapp.v1
+
+            class BookController {
+              static namespace = 'v1'
+            }</code>
+            <code>
+            package myapp.v2
+
+            class BookController {
+              static namespace = 'v2'
+             }</code>
+        section
+          h2 Url Versioning
+          p This approach has the disadvantage of requiring two different URI namespaces for your API.
+          p Discouraged in favor of Hypermedia
+        section
+          h2 Accept Header
+          pre.
+            <code>"/books"(version:'1.0', resources:"book", namespace:'v1')
+                   "/books"(version:'2.0', resources:"book", namespace:'v2')</code>
+          p Clients pass which version they need
+          pre <code>>curl -i -H "Accept-Version: 1.0" -X GET http://localhost:8080/books</code>
+          p Still need 2 namespaces
+
+        section
+          h2 REST CONTROLLER SUPER CLASS
+          p Going beyond @Resource
+          pre.
+            <code>class BookController extends RestfulController {
+              static responseFormats = ['json', 'xml']
+
+              BookController() {
+                  super(Book)
+              }
+
+              @Override
+              protected Book queryForResource(Serializable id) {
+                 Book.where {
+                      id == id && author.id = params.authorId
+                 }.find()
+              }
+            }</code>
+        section
+          h2 ROLL YOUR OWN
+          p Don’t have to use RestfulController
+          p Create your own. For examples look at the scaffolding that is created by
+          pre.
+            <code>grails generate-controller</code>
+          p The big win is the respond method
+        section
+          h2 MODIFY RESPONSE RENDER
+          p Custom Renderers allow you to include/exclude properties from a domain
+          p Register custom renderers in conf/spring/resources.groovy
+          pre.
+            <code>beans = {
+              bookRenderer(XmlRenderer, Book) {
+                includes = ['title']
+                excludes = ['isbn']
+              }
+            }</code>
+        section
+          p Grails’ Converters have a registered ObjectMarshaller
+          p Register custom marshaller in BootStrap.init
+          pre.
+            <code>JSON.registerObjectMarshaller(Book) {
+              def map = [:]
+              map['titl'] = it.title
+              map['auth'] = it.author
+              return map
+            }</code>
+        section
+          p Renderers use Converters under the covers as JSON, as XML.
+          p When implementing a custom renderer you could use Jackson, Gson, or any Java library
+          p Converters are tied to Grails’ own marshalling implementation
+        section
+          h2 Try IT!
+          p Modify the response for the User domain to only show the username, firstName, lastName and email
+          p You can do either a renderer or marshaller
+
+        section
+          h2 Solution 1
+          pre.
+            <code>JSON.registerObjectMarshaller(User) {
+              def map= [:]
+                map['username'] = it.username
+                map['firstName'] = it.firstName
+                map['lastName'] = it.lastName
+                map['email'] = it.email
+              return map
+            }</code>
+        section
+          h2 Solution 2
+          pre.
+            <code>import grails.rest.render.xml.*
+
+            beans = {
+              userRenderer(XmlRenderer, com.example.User) {
+                includes = ['firstName', 'lastName', 'username', 'email']
+              }
+            }</code>
+        section
+          h2
+
+        section
           h2 Conclusions
           ul Grails
             li makes prototyping fast and efficient
             li works well for standard web apps
+            li handles REST defaults easily
+        section
+          h2 Next Steps
+          ul
+            li Spring Security
+            li Documentation
+            li Tests
         section
           h2 Resources
           ul
@@ -144,9 +309,6 @@ html(class="no-js", ng-app="main")
           h3 Questions?
           p <a href="http://twitter.com/codeJENNerator" target="_blank"><img style="border:none;margin:0px;box-shadow:none;" src="./assets/img/CompanyAndProductLogos/twitter.png"/>@codeJENNerator</a>
           p jenn@gr8ladies.org
-        section
-          h3 Exercises
-          p <a href="https://github.com/gr8workshops/gr8workshops-content/blob/master/newtogroovy/introtograils/worksheets/GrailsExercises.pdf">Handout</a>
     script(src="./assets/js/app.js")
 
     // If the query includes 'print-pdf', use the PDF print sheet
