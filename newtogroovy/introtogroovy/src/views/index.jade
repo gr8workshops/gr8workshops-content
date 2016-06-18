@@ -84,7 +84,6 @@ html(class="no-js", ng-app="main")
             li File Processing
             li APIs
             li MetaProgramming
-            li Domain Specific Language (DSL)s
         section
           img(src='./assets/img/groovy-logo.png', style="border:none;")
           h2 Groovy
@@ -468,6 +467,30 @@ html(class="no-js", ng-app="main")
             -> 2
             -> 3</code>
         section
+          h2 Identity
+          pre.
+            <code>Integer myInteger = 2
+            int myInt = 2
+
+            myInteger.is(myInt)
+
+            -> true</code>
+        section
+          h2 Identity
+          pre.
+            <code>String world = 'World'
+            GString myGString = "Hello, $world"
+            String myString = 'Hello, World'
+
+            println myGString
+            println myString
+
+            myGString.is(myString)
+
+            -> Hello, World
+            -> Hello, World
+            -> false</code>
+        section
           h2 Other Groovy Operators
           ul
             li Ternary Operator
@@ -640,13 +663,12 @@ html(class="no-js", ng-app="main")
             you.sayHello()
             you."say You are awesome!"()</code>
         section
-          h2 Domain Specific Language (DSL)s
-        section
           h3 Other Cool Groovy Things
           ul
             li Regex
             li Groovy for Android
             li Compile Static Annotation
+            li Domain Specific Language (DSL)s
         section
           h2 Conclusions
           ul Groovy
@@ -654,7 +676,7 @@ html(class="no-js", ng-app="main")
             li adds features to enhance productivity over Java
             li is similar to other languages such as Ruby and Python
         section
-          h2 References
+          h2 Resources
           ul
             li Groovy in Action, 2nd Edition
             li <a href="http://groovy-lang.org" target="_blank">groovy-lang.org</a>

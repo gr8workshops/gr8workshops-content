@@ -96,7 +96,6 @@
             <li>File Processing</li>
             <li>APIs</li>
             <li>MetaProgramming</li>
-            <li>Domain Specific Language (DSL)s</li>
           </ul>
         </section>
         <section><img src="./assets/img/groovy-logo.png" style="border:none;">
@@ -164,7 +163,8 @@
             <li>Download Locally</li>
             <p><a href="http://groovy-lang.org/download.html" target="_blank">http://groovy-lang.org/download.html</a></p>
             <li>SDK Manager (formerly GVM)<a href="http://sdkman.io/">http://sdkman.io/</a>
-              <pre><code>curl -s get.sdkman.io | bash</code></pre>
+              <pre><code>curl -s get.sdkman.io | bash</code>
+<code>sdk install groovy</code></pre>
             </li>
           </ul>
         </section>
@@ -516,6 +516,30 @@ numbers.each {
 -> 3</code></pre>
         </section>
         <section>
+          <h2>Identity</h2>
+          <pre><code>Integer myInteger = 2
+int myInt = 2
+
+myInteger.is(myInt)
+
+-> true</code></pre>
+        </section>
+        <section>
+          <h2>Identity</h2>
+          <pre><code>String world = 'World'
+GString myGString = "Hello, $world"
+String myString = 'Hello, World'
+
+println myGString
+println myString
+
+myGString.is(myString)
+
+-> Hello, World
+-> Hello, World
+-> false</code></pre>
+        </section>
+        <section>
           <h2>Other Groovy Operators</h2>
           <ul>
             <li>Ternary Operator</li>
@@ -688,14 +712,12 @@ you.sayHello()
 you."say You are awesome!"()</code></pre>
         </section>
         <section>
-          <h2>Domain Specific Language (DSL)s</h2>
-        </section>
-        <section>
           <h3>Other Cool Groovy Things</h3>
           <ul>
             <li>Regex</li>
             <li>Groovy for Android</li>
             <li>Compile Static Annotation</li>
+            <li>Domain Specific Language (DSL)s</li>
           </ul>
         </section>
         <section>
@@ -707,7 +729,7 @@ you."say You are awesome!"()</code></pre>
           </ul>
         </section>
         <section>
-          <h2>References</h2>
+          <h2>Resources</h2>
           <ul>
             <li>Groovy in Action, 2nd Edition</li>
             <li><a href="http://groovy-lang.org" target="_blank">groovy-lang.org</a></li>
