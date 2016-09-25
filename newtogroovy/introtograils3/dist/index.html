@@ -82,7 +82,11 @@
             <li>Concepts</li>
             <ul>
               <li>MVC architecture</li>
-              <li></li>
+              <ul class="ul-no-style">
+                <li>Domain Classes</li>
+                <li>Controllers</li>
+                <li>GSPs</li>
+              </ul>
             </ul>
           </ul>
         </section>
@@ -150,6 +154,8 @@
           <ul>
             <li>1.0 in Feb 2008</li>
             <li>Grails 3.0 in Mar 2015</li>
+            <li>Formerly Sponsored by Pivotal</li>
+            <li>Now with Object Computing (OCI) of St. Louis</li>
           </ul>
         </section>
         <section>
@@ -209,7 +215,7 @@
             <pre><code>cd questionApp</code></pre>
           </section>
           <section>
-            <h2>Project Structure</h2><img src="./assets/img/slide-images/grails-folder-structure.png">
+            <h2>Project Structure</h2><img src="./assets/img/slide-images/grails-folder-structure.png" style="zoom:65%">
           </section>
           <section>
             <h2>Generating a Domain Class</h2>
@@ -451,11 +457,10 @@ class QuestionSpec extends Specification {
         </section>
         <section>
           <h2>The Grails Console</h2>
-          <pre><code>grails> console</code>
-</pre>
+          <pre><code>grails> console</code></pre>
         </section>
         <section>
-          <pre><code>import com.opi.Question
+          <pre><code>import com.example.Question
 
 Question q1 = new Question()
 Question q2 = new Question(
@@ -478,17 +483,14 @@ Question.findAll()</code></pre>
           <h2>Resources</h2>
           <ul>
             <li><a href="http://grails.org" target="_blank">grails.org</a></li>
-            <li><a href="http://stackoverflow.com/tags/grails/info target="_blank">StackOverflow</a></li>
+            <li><a href="http://stackoverflow.com/tags/grails/info" target="_blank">StackOverflow</a></li>
+            <li><a href="http://slack-signup.grails.org/">Slack</a></li>
           </ul>
         </section>
         <section>
           <h3>Questions?</h3>
           <p><a href="http://twitter.com/codeJENNerator" target="_blank"><img style="border:none;margin:0px;box-shadow:none;" src="./assets/img/CompanyAndProductLogos/twitter.png"/>@codeJENNerator</a></p>
           <p>jenn@gr8ladies.org</p>
-        </section>
-        <section>
-          <h3>Exercises</h3>
-          <p><a href="https://github.com/gr8workshops/gr8workshops-content/blob/master/newtogroovy/introtograils/worksheets/GrailsExercises.pdf">Handout</a></p>
         </section>
       </div>
     </div>
